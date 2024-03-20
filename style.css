@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Optionnel : assure que le body prend tout l'espace vertical disponible */
+    margin: 0;
+}
+
+main {
+    position: relative;
+    width: 1440px;
+    margin: 0 auto; /* Centrer le main horizontalement */
+    /* overflow: hidden;  */
+}
+
+img {
+    position: absolute;
+    max-width: 100%; /* Pour que l'image ne dépasse pas la largeur de son conteneur */
+    top: -600px;
+}
+
