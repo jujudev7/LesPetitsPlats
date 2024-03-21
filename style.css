@@ -1,26 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap");
+/* .manrope {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* .anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+   */
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Optionnel : assure que le body prend tout l'espace vertical disponible */
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Optionnel : assure que le body prend tout l'espace vertical disponible */
+  margin: 0;
 }
 
-main {
-    position: relative;
-    width: 1440px;
-    margin: 0 auto; /* Centrer le main horizontalement */
-    /* overflow: hidden;  */
+header {
+  position: absolute;
+  width: 1440px;
+  height: 667px;
+  margin: 0 auto;
+  top: 0;
+  background-image: url("assets/images/ramen.jpg");
+  background-size: cover; /* Ajuster la taille de l'image pour couvrir entièrement le header */
+  /* background-position: top center; */
 }
 
-img {
+.background-image {
     position: absolute;
-    max-width: 100%; /* Pour que l'image ne dépasse pas la largeur de son conteneur */
-    top: -600px;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/images/ramen.jpg");
+    background-size: cover;
+    background-position: top center;
+    filter: brightness(70%); /* Applique le filtre de luminosité uniquement à l'image de fond */
+    z-index: -1; /* Assure que l'image de fond est en arrière-plan du contenu de l'en-tête */
+  }
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 70px;
+  width: 207px;
 }
 
+h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 44px;
+  width: 720px;
+  color: #ffd15b;
+}
+
+.searchbar {
+  width: 954px;
+  height: 72px;
+  display: flex;
+  /* align-items: center; */
+  position: relative;
+}
+
+.search-text {
+  color: #7a7a7a;
+  font-family: "Manrope", sans-serif;
+  padding-left: 35px;
+}
+
+.btn-search {
+  position: absolute;
+  right: 62px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  /* background: #1b1b1b; */
+  border: none;
+  background-image: url("assets/icons/magnifying-glass.png");
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir le bouton */
+  background-position: center; /* Centre l'image à l'intérieur du bouton */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  cursor: pointer; /* Curseur de souris lors du survol */
+}
+
+.btn-search:hover {
+  background-image: url("assets/icons/magnifying-glass-hover.png");
+}
