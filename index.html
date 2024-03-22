@@ -13,43 +13,135 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="d-flex align-items-center justify-content-center flex-column">
-      <!-- <img
-        src="assets/images/ramen.jpg"
-        alt="ramen dans une assiette en céramique blanche"
-        class="header-img"
-      /> -->
+    <header
+      class="d-flex align-items-center justify-content-center flex-column"
+    >
       <div class="background-image"></div>
-        <img
-          src="assets/les-petits-plats-logo.png"
-          alt="logo Les Petits Plats"
-          aria-label="Aller à la page d'accueil"
-          class="logo"
-        />
-
-      <h1 class="text-center mb-4"> <!-- Ajout de mb-4 pour ajouter une marge en dessous -->
-        CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET
-        DÉLICIEUSES
+      <img
+        src="assets/les-petits-plats-logo.png"
+        alt="logo Les Petits Plats"
+        aria-label="Aller à la page d'accueil"
+        class="logo"
+      />
+      <h1 class="text-center mb-4">
+        <!-- Ajout de mb-4 pour ajouter une marge en dessous -->
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
       </h1>
 
-      <form class="d-flex searchbar input-group" role="search">
-        <input
-          class="search-text form-control rounded"
-          type="search"
-          placeholder="Rechercher une recette, un ingrédient, ..."
-          aria-label="Recherche"
-        />
-        <button class="btn btn-search" type="submit"></button>
-        <!-- <button class="btn btn-search rounded" type="submit"></button> -->
+      <form class="input-group justify-content-center" role="search">
+        <div class="d-flex searchbar">
+          <input
+            class="search-text form-control rounded"
+            type="search"
+            id="search-input"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+            aria-label="Recherche"
+          />
+          <img
+            src="assets/icons/clear-search.png"
+            alt="Supprimer le texte de recherche"
+            class="clear-search-icon"
+          />
+          <button class="btn btn-search" type="submit"></button>
+          <!-- <button class="btn btn-search rounded" type="submit"></button> -->
+        </div>
       </form>
     </header>
+
     <main>
-      <h2>Hello, world!</h2>
+      <div class="container-main">
+        <section class="filters-zone d-flex align-items-center">
+          <div class="filters d-flex align-items-center">
+            <div class="accordion" id="accordionIngredients">
+              <!-- ID unique pour le premier accordion -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseIngredients"
+                    aria-expanded="true"
+                    aria-controls="collapseIngredients"
+                  >
+                    Ingrédients
+                  </button>
+                </h2>
+                <div
+                  id="collapseIngredients"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionIngredients"
+                >
+                  <div class="accordion-body">
+                    though the transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion" id="accordionAppliances">
+              <!-- ID unique pour le deuxième accordion -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseAppliances"
+                    aria-expanded="true"
+                    aria-controls="collapseAppliances"
+                  >
+                    Appareils
+                  </button>
+                </h2>
+                <div
+                  id="collapseAppliances"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionAppliances"
+                >
+                  <div class="accordion-body">
+                    though the transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion" id="accordionUtensils">
+              <!-- ID unique pour le troisième accordion -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseUtensils"
+                    aria-expanded="true"
+                    aria-controls="collapseUtensils"
+                  >
+                    Ustensiles
+                  </button>
+                </h2>
+                <div
+                  id="collapseUtensils"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionUtensils"
+                >
+                  <div class="accordion-body">
+                    though the transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="nb-recipes text-end">1500 recettes</span>
+        </section>
+      </div>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="App.js"></script>
   </body>
 </html>
