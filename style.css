@@ -102,10 +102,10 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 52px;
   border: none;
   background-image: url("assets/icons/magnifying-glass.png");
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-  cursor: pointer; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .btn-search:hover {
@@ -117,8 +117,7 @@ input[type="search"]::-webkit-search-cancel-button {
 main {
   background: #ededed;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
 }
@@ -137,6 +136,7 @@ main {
 
 .filters-zone {
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .accordion {
@@ -171,4 +171,77 @@ main {
   font-size: 1.3em;
 }
 
+/* CARDS */
 
+.card {
+  width: 380px;
+  height: 731px;
+  border: none;
+  box-shadow: 0px 4px 34px 30px #0000000a;
+}
+
+.card-img-top {
+  margin: 0;
+  padding: 0;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.badge {
+  position: absolute;
+  top: 21px;
+  right: 18px;
+  background: #ffd15b;
+  color: #1b1b1b;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  width: 63px;
+  height: 26px;
+  padding: 6px 15px 5px 15px;
+}
+
+.card-title {
+  font-family: "Anton", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 30px 0;
+}
+
+.card-recipe,
+.card-ingredients {
+  font-family: "Manrope", sans-serif;
+  color: #7A7A7A;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 15px 0;
+}
+
+.card-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.card-ingredient {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.card-quantity {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7A7A7A;
+
+}
