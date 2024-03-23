@@ -20,10 +20,6 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   height: 100vh; /* assure que le body prend tout l'espace vertical disponible  */
   margin: 0;
 }
@@ -33,20 +29,20 @@ body {
 header {
   position: relative;
   width: 100%;
-  height: 667px; /* Ajout de la hauteur */
+  height: 667px;
 }
 
-.background-image {
-  position: absolute;
+header::after {
+  content: ""; /* Ajoute un contenu à l'élément pseudo-élément */
+  position: absolute; 
   width: 100%;
-  height: 667px;
+  height: 100%;
   background-image: url("assets/images/ramen.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: 0px -213px;
-  filter: brightness(
-    70%
-  ); /* Applique le filtre de luminosité uniquement à l'image de fond */
-  z-index: -1; /* Assure que l'image de fond est en arrière-plan du contenu de l'en-tête */
+  filter: brightness(70%); 
+  z-index: -1; /* Assure que cet élément pseudo-élément est en arrière-plan */
 }
 
 .logo {
@@ -54,6 +50,7 @@ header {
   top: 51px;
   left: 69px;
   width: 207px;
+  height: auto; /* Permet au logo de conserver ses proportions */
 }
 
 h1 {
@@ -61,6 +58,11 @@ h1 {
   font-size: 44px;
   width: 720px;
   color: #ffd15b;
+}
+
+.form-control:focus {
+  border: none;
+  box-shadow: none;
 }
 
 .searchbar {
@@ -117,13 +119,10 @@ input[type="search"]::-webkit-search-cancel-button {
 main {
   background: #ededed;
   width: 100%;
-  /* margin: 0 auto; */
-  display: flex;
-  flex-direction: column;
 }
 
 .container-main {
-  margin-top: 20px;
+  padding-top: 20px;
   margin-right: 102px;
   margin-left: 102px;
   margin-bottom: 80px;
@@ -158,8 +157,8 @@ main {
 }
 
 .accordion-button:focus {
-  z-index: 3;
-  outline: 0;
+  /* z-index: 3;
+  outline: 0; */
   box-shadow: none;
 }
 
@@ -214,7 +213,7 @@ main {
 .card-recipe,
 .card-ingredients {
   font-family: "Manrope", sans-serif;
-  color: #7A7A7A;
+  color: #7a7a7a;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -242,6 +241,5 @@ main {
   font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #7A7A7A;
-
+  color: #7a7a7a;
 }
