@@ -122,16 +122,20 @@ input[type="search"]::-webkit-search-cancel-button {
   transform: translateY(-50%);
   width: 52px;
   height: 52px;
+  background: #1B1B1B;
   border: none;
-  background-image: url("assets/icons/magnifying-glass.png");
-  background-size: cover;
+  background-image: url("assets/icons/magnifying-glass.svg");
+  background-size: 27px 28px;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
 }
 
 .btn-search:hover {
-  background-image: url("assets/icons/magnifying-glass-hover.png");
+  background: #FFD15B;
+  background-image: url("assets/icons/magnifying-glass-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btn-search-small {

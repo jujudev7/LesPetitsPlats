@@ -17,7 +17,7 @@
 ✅ Dropdown recherche d'ingrédients  
 ❌ Labelsearch  
 ✅ .li-item  
-❌ Croix search-mini  
+✅ Croix search-mini  
 ❌ Cards  
 ❌ Réaliser l’interface de la page web  
 ❌ Faire cours Green IT
