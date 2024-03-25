@@ -11,7 +11,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/54c01b8a7c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/54c01b8a7c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header
@@ -38,11 +41,10 @@
             placeholder="Rechercher une recette, un ingrédient, ..."
             aria-label="Recherche"
           />
-          <img
-            src="assets/icons/clear-search.png"
-            alt="Supprimer le texte de recherche"
-            class="clear-search-icon"
-          />
+          <i
+            class="fa-solid fa-xmark clear-search-icon"
+            aria-label="Supprimer le texte de recherche"
+          ></i>
           <button class="btn btn-search" type="submit"></button>
         </div>
       </form>
@@ -71,6 +73,28 @@
                   class="accordion-collapse collapse"
                   data-bs-parent="#accordionIngredients"
                 >
+                <form
+                    class="input-group justify-content-center"
+                    role="search"
+                  >
+                    <div class="d-flex searchbar-small">
+                      <input
+                        class="search-text form-control"
+                        type="search"
+                        id="search-input-ingredients"
+                        placeholder="|"
+                        aria-label="Recherche"
+                      />
+                      <i
+                        class="fa-solid fa-xmark clear-search-icon-ingredients"
+                        aria-label="Supprimer le texte de recherche"
+                      ></i>
+                      <button
+                        class="btn btn-search-small"
+                        type="submit"
+                      ></button>
+                    </div>
+                  </form>
                   <div class="accordion-body">
                     though the transition does limit overflow.
                   </div>
@@ -97,6 +121,28 @@
                   class="accordion-collapse collapse"
                   data-bs-parent="#accordionAppliances"
                 >
+                <form
+                    class="input-group justify-content-center"
+                    role="search"
+                  >
+                    <div class="d-flex searchbar-small">
+                      <input
+                        class="search-text form-control"
+                        type="search"
+                        id="search-input-appliances"
+                        placeholder="|"
+                        aria-label="Recherche"
+                      />
+                      <i
+                        class="fa-solid fa-xmark clear-search-icon-appliances"
+                        aria-label="Supprimer le texte de recherche"
+                      ></i>
+                      <button
+                        class="btn btn-search-small"
+                        type="submit"
+                      ></button>
+                    </div>
+                  </form>
                   <div class="accordion-body">
                     though the transition does limit overflow.
                   </div>
@@ -131,15 +177,14 @@
                       <input
                         class="search-text form-control"
                         type="search"
-                        id="search-input-tags"
+                        id="search-input-ustensils"
                         placeholder="|"
                         aria-label="Recherche"
                       />
-                      <img
-                      src="assets/icons/icon-clear-small.png"
-                      alt="Supprimer le texte de recherche"
-                      class="clear-search-icon"
-                    />
+                      <i
+                        class="fa-solid fa-xmark clear-search-icon-ustensils"
+                        aria-label="Supprimer le texte de recherche"
+                      ></i>
                       <button
                         class="btn btn-search-small"
                         type="submit"
@@ -149,13 +194,18 @@
                   <div class="accordion-body">
                     <div class="selected">
                       <div class="row">
-                      <span class="col-md-9 text-selected">Crème de coco</span>
-                      <div class="col-md-3 text-end">
-                        <i class="fa-solid fa-circle-xmark" aria-label="Supprimer l'élément sélectionné"></i>
+                        <span class="col-md-9 text-selected"
+                          >Crème de coco</span
+                        >
+                        <div class="col-md-3 text-end">
+                          <i
+                            class="fa-solid fa-circle-xmark"
+                            aria-label="Supprimer l'élément sélectionné"
+                          ></i>
+                        </div>
                       </div>
                     </div>
-                </div>
-                    
+
                     <ul class="list-group">
                       <li class="list-group-item">Jus de citron</li>
                       <li class="list-group-item">Glaçons</li>

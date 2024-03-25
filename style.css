@@ -106,11 +106,12 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .clear-search-icon {
-  margin-right: 10px;
   position: absolute;
-  right: 125px;
+  right: 130px;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 20px;
+  color: #7A7A7A;
   display: none;
 }
 
@@ -197,6 +198,18 @@ main {
 .accordion-body {
   position: relative;
   font-size: 14px;
+}
+
+.clear-search-icon-ingredients,
+.clear-search-icon-appliances,
+.clear-search-icon-ustensils {
+  position: absolute;
+  right: 55px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #7A7A7A;
+  display: none;
 }
 
 .selected {
