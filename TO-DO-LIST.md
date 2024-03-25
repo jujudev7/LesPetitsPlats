@@ -15,12 +15,18 @@
 ✅ 1500 recettes  
 ✅ Card  
 ✅ Dropdown recherche d'ingrédients  
-❌ Labelsearch  
+✅ Tag selected
 ✅ .li-item  
 ✅ Croix search-mini  
+✅ loupe png -> svg
 ❌ Cards  
 ❌ Réaliser l’interface de la page web  
 ❌ Faire cours Green IT
+
+## JAVASCRIPT
+✅ clear search
+✅ clear search tags
+❌ delete tag
 
 ## LOGIQUE ALGORITHMIQUE
 ❌ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
