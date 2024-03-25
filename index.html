@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/54c01b8a7c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header
@@ -31,7 +32,7 @@
       <form class="input-group justify-content-center" role="search">
         <div class="d-flex searchbar">
           <input
-            class="search-text form-control rounded"
+            class="search-principal form-control rounded"
             type="search"
             id="search-input"
             placeholder="Rechercher une recette, un ingrédient, ..."
@@ -43,7 +44,6 @@
             class="clear-search-icon"
           />
           <button class="btn btn-search" type="submit"></button>
-          <!-- <button class="btn btn-search rounded" type="submit"></button> -->
         </div>
       </form>
     </header>
@@ -123,8 +123,46 @@
                   class="accordion-collapse collapse"
                   data-bs-parent="#accordionUtensils"
                 >
+                  <form
+                    class="input-group justify-content-center"
+                    role="search"
+                  >
+                    <div class="d-flex searchbar-small">
+                      <input
+                        class="search-text form-control"
+                        type="search"
+                        id="search-input-tags"
+                        placeholder="|"
+                        aria-label="Recherche"
+                      />
+                      <img
+                      src="assets/icons/icon-clear-small.png"
+                      alt="Supprimer le texte de recherche"
+                      class="clear-search-icon"
+                    />
+                      <button
+                        class="btn btn-search-small"
+                        type="submit"
+                      ></button>
+                    </div>
+                  </form>
                   <div class="accordion-body">
-                    though the transition does limit overflow.
+                    <div class="selected">
+                      <div class="row">
+                      <span class="col-md-9 text-selected">Crème de coco</span>
+                      <div class="col-md-3 text-end">
+                        <i class="fa-solid fa-circle-xmark" aria-label="Supprimer l'élément sélectionné"></i>
+                      </div>
+                    </div>
+                </div>
+                    
+                    <ul class="list-group">
+                      <li class="list-group-item">Jus de citron</li>
+                      <li class="list-group-item">Glaçons</li>
+                      <li class="list-group-item">Tomate</li>
+                      <li class="list-group-item">Poulet</li>
+                      <li class="list-group-item">Poivron rouge</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -134,29 +172,44 @@
         </section>
         <section class="cards">
           <div class="card">
-            <img src="assets/images/damier-check.png" class="card-img-top" alt="...">
+            <img
+              src="assets/images/damier-check.png"
+              class="card-img-top"
+              alt="..."
+            />
             <span class="badge rounded-pill">XXmin</span>
             <div class="card-body">
               <h3 class="card-title">Titre de la recette</h3>
               <h4 class="card-recipe">Recette</h4>
               <p class="card-text">
-                Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                Mettre les glaçons à votre goût dans le blender, Ajouter le lait
+                la crème de coco, le jus de 2 citrons et le sucre ensemble.
+                Mixer jusqu'à obtenir la consistance désirée.
+              </p>
               <h4 class="card-ingredients">Ingrédients</h4>
               <div class="grid-ingredients">
                 <div class="row row-cols-2">
-                  <div class="col"> <p class="card-ingredient">Ingrédient #1</p>
-                    <p class="card-quantity">400ml</p></div>
-                  <div class="col"> <p class="card-ingredient">Ingrédient #2</p>
-                    <p class="card-quantity">2</p></div>
-                  <div class="col"><p class="card-ingredient">Ingrédient #3</p>
-                    <p class="card-quantity">4 cuillères</p></div>
-                  <div class="col"><p class="card-ingredient">Ingrédient #4</p>
-                    <p class="card-quantity">20g</p></div>
+                  <div class="col">
+                    <p class="card-ingredient">Ingrédient #1</p>
+                    <p class="card-quantity">400ml</p>
+                  </div>
+                  <div class="col">
+                    <p class="card-ingredient">Ingrédient #2</p>
+                    <p class="card-quantity">2</p>
+                  </div>
+                  <div class="col">
+                    <p class="card-ingredient">Ingrédient #3</p>
+                    <p class="card-quantity">4 cuillères</p>
+                  </div>
+                  <div class="col">
+                    <p class="card-ingredient">Ingrédient #4</p>
+                    <p class="card-quantity">20g</p>
+                  </div>
                 </div>
               </div>
-              
-                <p class="card-ingredient">Ingrédient #5</p>
-                <p class="card-quantity">2</p>
+
+              <p class="card-ingredient">Ingrédient #5</p>
+              <p class="card-quantity">2</p>
             </div>
           </div>
         </section>

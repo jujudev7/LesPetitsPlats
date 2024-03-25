@@ -1,18 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap");
-/* .manrope {
-  font-family: "Manrope", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-} */
-
-/* .anton-regular {
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-   */
+/* font-family: "Manrope", sans-serif;
+   font-family: "Anton", sans-serif;
+*/
 
 * {
   margin: 0;
@@ -34,14 +24,14 @@ header {
 
 header::after {
   content: ""; /* Ajoute un contenu à l'élément pseudo-élément */
-  position: absolute; 
+  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url("assets/images/ramen.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0px -213px;
-  filter: brightness(70%); 
+  filter: brightness(70%);
   z-index: -1; /* Assure que cet élément pseudo-élément est en arrière-plan */
 }
 
@@ -60,7 +50,7 @@ h1 {
   color: #ffd15b;
 }
 
-.form-control:focus {
+.search-principal.form-control:focus {
   border: none;
   box-shadow: none;
 }
@@ -71,10 +61,39 @@ h1 {
   position: relative;
 }
 
+.searchbar-small {
+  width: 177px;
+  height: 36px;
+  padding-left: 11px;
+}
+
+.search-principal::placeholder {
+  color: #c6c6c6;
+}
+
+.search-text::placeholder {
+  color: #c6c6c6;
+}
+
+.search-principal {
+  color: #7a7a7a;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 35px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #c6c6c6;
+}
+
 .search-text {
   color: #7a7a7a;
   font-family: "Manrope", sans-serif;
-  padding-left: 35px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 2px;
 }
 
 /* Cible l'icône de suppression dans un input de type recherche */
@@ -114,11 +133,27 @@ input[type="search"]::-webkit-search-cancel-button {
   background-image: url("assets/icons/magnifying-glass-hover.png");
 }
 
+.btn-search-small {
+  position: absolute;
+  background-image: url("assets/icons/magnifying-glass-small.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
 /* MAIN */
 
 main {
   background: #ededed;
   width: 100%;
+  padding-bottom: 80px;
 }
 
 .container-main {
@@ -127,11 +162,6 @@ main {
   margin-left: 102px;
   margin-bottom: 80px;
 }
-
-/* .filters {
-  margin-top: 20px;
-  margin-bottom: 100px;
-} */
 
 .filters-zone {
   justify-content: space-between;
@@ -143,6 +173,7 @@ main {
   height: 56px;
   border-radius: 11px;
   margin-right: 20px;
+  z-index: 1;
 }
 
 .accordion-button {
@@ -154,12 +185,54 @@ main {
 
 .accordion-button:not(.collapsed) {
   background: none;
+  box-shadow: none;
 }
 
 .accordion-button:focus {
   /* z-index: 3;
   outline: 0; */
   box-shadow: none;
+}
+
+.accordion-body {
+  position: relative;
+  font-size: 14px;
+}
+
+.selected {
+  position: absolute;
+  background: #ffd15b;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 7px 18px;
+  margin-top: 18px;
+}
+
+.selected:hover {
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fa-circle-xmark {
+  visibility: hidden; /* Par défaut, l'icône est cachée */
+}
+
+.selected:hover .fa-circle-xmark {
+  visibility: visible; /* Afficher l'icône lorsque l'élément est survolé */
+}
+
+ul,
+ol {
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+.list-group-item {
+  border: none;
+  padding: 0;
+  line-height: 2em;
 }
 
 .nb-recipes {
