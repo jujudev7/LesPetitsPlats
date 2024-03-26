@@ -113,6 +113,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 20px;
   color: #7a7a7a;
   display: none;
+  cursor: pointer;
 }
 
 .btn-search {
@@ -214,6 +215,7 @@ main {
   font-size: 10px;
   color: #7a7a7a;
   display: none;
+  cursor: pointer;
 }
 
 .selected {
@@ -229,7 +231,6 @@ main {
 .selected:hover {
   font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
 }
 
 .fa-circle-xmark {
@@ -238,6 +239,7 @@ main {
 
 .selected:hover .fa-circle-xmark {
   visibility: visible; /* Afficher l'icône lorsque l'élément est survolé */
+  cursor: pointer;
 }
 
 ul,
@@ -279,6 +281,7 @@ ol {
   color: #1B1B1B;
   font-size: 16px;
   padding-left: 25px;
+  cursor: pointer;
 }
 
 /* CARDS */
@@ -287,11 +290,21 @@ ol {
   margin-top: 10px;
 }
 
+.grid-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  margin-bottom: 66px;
+}
+
 .card {
   width: 380px;
   height: 731px;
   border: none;
   box-shadow: 0px 4px 34px 30px #0000000a;
+  /* margin-bottom: 66px; */
 }
 
 .card-img-top {
