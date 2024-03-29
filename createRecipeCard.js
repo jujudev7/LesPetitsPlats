@@ -9,7 +9,7 @@ export function createRecipeCard(recipe) {
 
   const cardHTML = `
     <div class="card h-100">
-      <img src="assets/images/damier-check.png" class="card-img-top" alt="...">
+    <img src="assets/images/recipes/${recipe.image}" class="card-img" alt="...">
       <span class="badge rounded-pill">${recipe.time} min</span>
       <div class="card-body">
         <h3 class="card-title">${recipe.name}</h3>

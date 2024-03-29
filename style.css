@@ -302,9 +302,14 @@ ol {
   margin-top: 10px;
 }
 
-.grid-cards {
+/* .grid-cards {
   display: flex;
   flex-wrap: wrap;
+} */
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
 }
 
 .col-md-4 {
@@ -319,9 +324,10 @@ ol {
   /* margin-bottom: 66px; */
 }
 
-.card-img-top {
-  margin: 0;
-  padding: 0;
+.card-img {
+  width: 380px;
+  height: 253px;
+  object-fit: cover;
 }
 
 .card-body {
