@@ -39,8 +39,11 @@ function updateInterface(recipes) {
   cardsContainer.innerHTML = "";
 
   if (recipes.length === 0) {
-    error.textContent = "0 résultat";
+    error.style.display = "block";
+    error.textContent =
+      "0 résultat, veuillez effectuer une nouvelle recherche svp.";
   } else {
+    error.style.display = "none";
     error.textContent = "";
     recipes.forEach((recipe) => {
       // Utiliser la fonction createRecipeCard pour générer la carte de recette
@@ -72,11 +75,16 @@ function searching() {
       } catch (error) {
         console.error("Une erreur est survenue lors de la recherche :", error);
       }
+    } else if (search.length == 1 || search.length == 2) {
+      // Afficher un message d'erreur indiquant qu'il faut saisir au moins 3 caractères
+      const error = document.querySelector(".error");
+      error.style.display = "block";
+      error.textContent =
+        "Veuillez saisir au moins 3 caractères pour commencer la recherche.";
     } else {
       // Afficher un message d'erreur indiquant qu'il faut saisir au moins 3 caractères
       const error = document.querySelector(".error");
-      error.textContent =
-        "Veuillez saisir au moins 3 caractères pour commencer la recherche.";
+      error.style.display = "none";
     }
   });
 }

@@ -45,6 +45,7 @@
 ❌ Fontawesome seulement icones nécessaires  
 ❌ Séparer et minifier le CSS  
 ❌ Régler problème largeur cards  
+❌ Régler problème msg error fait bouger le reste  
 
 ## JAVASCRIPT
 ✅ clear search  
