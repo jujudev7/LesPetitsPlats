@@ -39,10 +39,12 @@
 ✅ Cursor pointer sur clear/delete  
 ✅ Cards    
 ✅ Réaliser l’interface de la page web    
-❌ Poids images ?  
+✅ Poids images réduit 
+✅ Faire cours Algorithmes 
+
 ❌ Fontawesome seulement icones nécessaires  
 ❌ Séparer et minifier le CSS  
-❌ Faire cours Algorithmes 
+❌ Régler problème largeur cards  
 
 ## JAVASCRIPT
 ✅ clear search  
