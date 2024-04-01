@@ -42,6 +42,7 @@
 ✅ Poids images réduit 
 ✅ Faire cours Algorithmes 
 
+❌ Sticky Filters
 ❌ Fontawesome seulement icones nécessaires  
 ❌ Séparer et minifier le CSS  
 ❌ Régler problème largeur cards  
@@ -50,7 +51,7 @@
 ## JAVASCRIPT
 ✅ clear search  
 ✅ clear search tags  
-❌ Open/Delete tag  
+❌ Open/Delete tag
 
 ## LOGIQUE ALGORITHMIQUE 🧠
 ❌ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
