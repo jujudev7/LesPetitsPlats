@@ -2,48 +2,70 @@
 import { recipes } from "./recipes.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Créer selectedTagsContainer si ce n'est pas déjà fait
+  const accordionBody = document.querySelector(".accordion-body");
+  const selectedTagsContainer = document.createElement("div");
+  selectedTagsContainer.classList.add("selected-tags");
+  accordionBody.insertBefore(selectedTagsContainer, accordionBody.firstElementChild);
+
   const selectListItem = function (li) {
-    // Ajouter la classe "selected-tag" à l'élément li
-    li.classList.add("selected-tag");
-    // Ajouter l'événement de clic à l'élément li
-    li.addEventListener("click", function () {
-      handleTagClick(li);
-    });
-
-    // Créer selectedTagsContainer si ce n'est pas déjà fait
-    const accordionBody = document.querySelector(".accordion-body");
-    const selectedTagsContainer = document.createElement("div");
-    selectedTagsContainer.classList.add("selected-tags");
-    accordionBody.insertBefore(selectedTagsContainer, accordionBody.firstElementChild);
-
-    const icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-circle-xmark");
-    icon.setAttribute("aria-label", "Supprimer l'élément sélectionné");
-    icon.style.visibility = "hidden";
-
-    // Ajouter l'événement de survol pour afficher l'icône
-    li.addEventListener("mouseover", function () {
-      // Rendre l'icône visible lorsque survolé
-      icon.style.visibility = "visible";
-    });
-
-    // Ajouter l'événement pour masquer l'icône lorsque le survol se termine
-    li.addEventListener("mouseout", function () {
-      // Rendre l'icône invisible lorsque le survol se termine
+    // Vérifier si l'élément est déjà sélectionné
+    if (!li.classList.contains("selected-tag")) {
+      // Ajouter la classe "selected-tag" à l'élément li
+      li.classList.add("selected-tag");
+  
+      const icon = document.createElement("i");
+      icon.classList.add("fa-solid", "fa-circle-xmark");
+      icon.setAttribute("aria-label", "Supprimer l'élément sélectionné");
       icon.style.visibility = "hidden";
-    });
-    // Déplacer l'élément cliqué au-dessus de la liste
-    selectedTagsContainer.appendChild(li);
-    selectedTagsContainer.appendChild(icon);
-    console.log(selectedTagsContainer);
+  
+      const containerSelectedTag = document.createElement("div");
+      containerSelectedTag.classList.add("container-selected-tag");
+  
+      // Ajouter l'événement de survol pour afficher l'icône
+      containerSelectedTag.addEventListener("mouseover", function () {
+        // Rendre l'icône visible lorsque survolé
+        icon.style.visibility = "visible";
+      });
+  
+      // Ajouter l'événement pour masquer l'icône lorsque le survol se termine
+      containerSelectedTag.addEventListener("mouseout", function () {
+        // Rendre l'icône invisible lorsque le survol se termine
+        icon.style.visibility = "hidden";
+      });
+  
+      // Ajouter l'événement de clic à l'icône pour supprimer l'élément sélectionné
+      icon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Empêcher la propagation de l'événement de clic au parent
+        // Supprimer la classe "selected-tag" de l'élément li
+        li.classList.remove("selected-tag");
+        // Supprimer la div container-selected-tag
+        containerSelectedTag.remove();
+        // Réinsérer l'élément li à son emplacement initial dans la liste
+        const list = document.querySelector(".list-group");
+        list.appendChild(li);
+      });
+  
+      // Ajouter l'icône et l'élément li au container-selected-tag
+      containerSelectedTag.appendChild(li);
+      containerSelectedTag.appendChild(icon);
+  
+      // Ajouter le container-selected-tag au conteneur de tags sélectionnés
+      selectedTagsContainer.appendChild(containerSelectedTag);
+    }
   };
+  
+  
+  
 
   // Récupérer tous les éléments li de la liste et leur attacher un événement de clic
   const listItems = document.querySelectorAll(".list-group-item");
   listItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      selectListItem(item);
-    });
+    if (!item.classList.contains("selected-tag")) {
+      item.addEventListener("click", function () {
+        selectListItem(item);
+      });
+    }
   });
 
   const ingredientsAccordionBody = document.getElementById(

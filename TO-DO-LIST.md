@@ -42,16 +42,19 @@
 ✅ Poids images réduit 
 ✅ Faire cours Algorithmes 
 
+❌ Cibler Thon rouge (ou blanc) & Champignons de paris, d'autres ? (font-size ?)
 ❌ Sticky Filters
 ❌ Fontawesome seulement icones nécessaires  
 ❌ Séparer et minifier le CSS  
 ❌ Régler problème largeur cards  
-❌ Régler problème msg error fait bouger le reste  
+❌ Régler problème msg error fait bouger le reste 
+❌ Replacer tag dans liste par rapport à son index ? 
 
 ## JAVASCRIPT
 ✅ clear search  
 ✅ clear search tags  
-❌ Open/Delete tag
+✅ Open tag
+✅ Delete tag
 
 ## LOGIQUE ALGORITHMIQUE 🧠
 ❌ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
