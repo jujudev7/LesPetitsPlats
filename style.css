@@ -243,13 +243,24 @@ main {
 
 .labelsearch-tags .container-selected-tag {
   width: auto;
+  background: #ffd15b;
+  border-radius: 11px;
+  margin-right: 12px;
 }
 
 .labelsearch-tags .list-group-item.selected-tag {
   width: auto;
-  padding: 17px 18px;
+  padding: 17px 0px 17px 18px;
   border-radius: 10px;
   margin-right: 20px;
+}
+
+.fa-xmark {
+  padding-right: 15px;
+}
+
+.fa-square-xmark {
+  padding-right: 13px;
 }
 
 .selected-tags {

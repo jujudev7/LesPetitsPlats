@@ -29,7 +29,9 @@ export const selectListItem = function (li) {
       containerSelectedTag.remove();
       // Supprimer la copie du tag dans labelsearchTagsContainer en fonction de son index
       const index = li.getAttribute("data-index");
-      const selectedTagCopy = labelsearchTagsContainer.querySelector(`.selected-tag-copy[data-index="${index}"]`);
+      const selectedTagCopy = labelsearchTagsContainer.querySelector(
+        `.selected-tag-copy[data-index="${index}"]`
+      );
       if (selectedTagCopy) {
         selectedTagCopy.remove();
       }
@@ -84,11 +86,39 @@ export function createList(items, onClickCallback) {
 // Fonction pour déplacer le tag sélectionné au-dessus de la liste des li
 function moveTagToTop(selectedTag, index) {
   selectedTagsContainer.appendChild(selectedTag); // Déplacer le tag sélectionné à l'intérieur du conteneur
+
   // Créer une copie de l'élément sélectionné pour l'ajouter à la balise <div class="labelsearch-tags"></div>
   const selectedTagCopy = selectedTag.cloneNode(true);
   selectedTagCopy.classList.add("selected-tag-copy"); // Ajouter une classe spécifique à la copie du tag
   selectedTagCopy.dataset.index = index; // Ajouter l'index comme attribut de données à la copie du tag
-  labelsearchTagsContainer.appendChild(selectedTagCopy);
+
+  // Supprimer l'icône fa-circle-xmark de la copie du tag
+  const circleIcon = selectedTagCopy.querySelector(".fa-solid.fa-circle-xmark");
+  if (circleIcon) {
+    circleIcon.remove();
+  }
+
+  // Créer l'icône de suppression et l'ajouter à la copie du tag
+  const deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("fa-solid", "fa-xmark");
+  deleteIcon.setAttribute("aria-label", "Supprimer l'élément sélectionné");
+
+  // Ajouter l'icône de suppression à la copie du tag
+  selectedTagCopy.appendChild(deleteIcon);
+
+  // Ajout d'un écouteur d'événement pour le survol de la souris
+  deleteIcon.addEventListener("mouseenter", function () {
+    // Changer la classe de l'icône lors du survol
+    deleteIcon.classList.replace("fa-xmark", "fa-square-xmark");
+  });
+
+  // Ajout d'un écouteur d'événement pour lorsque la souris quitte l'icône
+  deleteIcon.addEventListener("mouseleave", function () {
+    // Revenir à la classe initiale lorsque la souris quitte
+    deleteIcon.classList.replace("fa-square-xmark", "fa-xmark");
+  });
+
+  labelsearchTagsContainer.appendChild(selectedTagCopy); // Ajouter la copie du tag à .labelsearch-tags
 }
 
 document.addEventListener("DOMContentLoaded", function () {
