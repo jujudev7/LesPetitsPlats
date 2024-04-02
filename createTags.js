@@ -1,6 +1,10 @@
 // Importer les données des recettes depuis le fichier recipes.js
 import { recipes } from "./recipes.js";
-import { searchIngredients, searchAppliances, searchUstensils } from './searchFunctions.js';
+import {
+  searchIngredients,
+  searchAppliances,
+  searchUstensils,
+} from "./searchFunctions.js";
 
 // Déclaration de selectedTagsContainer en dehors de la fonction DOMContentLoaded
 const selectedTagsContainer = document.createElement("div");
@@ -145,6 +149,25 @@ function moveTagToTop(selectedTag, index) {
 
   labelsearchTagsContainer.appendChild(selectedTagCopy); // Ajouter la copie du tag à .labelsearch-tags
 }
+
+document.addEventListener("click", function (event) {
+  const filtersArea = document.querySelector(".filters");
+  const accordionButtons = document.querySelectorAll(
+    "#accordionIngredients .accordion-button, #accordionAppliances .accordion-button, #accordionUtensils .accordion-button"
+  );
+  console.log("Zone des filtres sélectionnée :", filtersArea);
+  console.log("Clic détecté");
+  // Vérifier si l'accordéon est ouvert et si le clic n'est pas dans la zone des filtres
+  accordionButtons.forEach(accordionButton => {
+    if (
+      accordionButton.getAttribute("aria-expanded") === "true" &&
+      !filtersArea.contains(event.target)
+    ) {
+      // Fermer l'accordéon en simulant un clic sur le bouton d'accordéon
+      accordionButton.click();
+    }
+  });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Créer selectedTagsContainer si ce n'est pas déjà fait
