@@ -55,12 +55,13 @@
 ✅ clear search tags  
 ✅ Open tag
 ✅ Delete tag
+❌ Pblm Tags au clic
 
 ## LOGIQUE ALGORITHMIQUE 🧠
-❌ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
+✅ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
 ❌ Créer les 2 algorigrammes  
-❌ Implémenter la première version de son algorithme de recherche. Il sera plus naturel de commencer par implémenter la recherche simple, 
-    - puis la recherche par tags.   
+✅  Implémenter la première version de son algorithme de recherche. Il sera plus naturel de commencer par implémenter la recherche simple, 
+✅ - puis la recherche par tags.   
 ❌ Répéter la procédure pour la 2ème implémentation.  
 ❌ Comparaison des résultats des algorithmes via un outil de benchmark comme jsben.ch, jsbench.me, jsperf.com.  
 
