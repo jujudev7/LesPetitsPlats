@@ -1,25 +1,25 @@
 // Fonction pour rechercher dans la liste des ingrédients
-function searchIngredients(search) {
+function searchIngredients(search, ingredientsList) {
     // Filtrer la liste des ingrédients en fonction de la recherche de l'utilisateur
-    const filteredIngredients = ingredientsList.filter(ingredient =>
+    const filteredIngredients = ingredientsList.filter((ingredient) =>
       ingredient.toLowerCase().includes(search.toLowerCase())
     );
     return filteredIngredients;
   }
   
   // Fonction pour rechercher dans la liste des appareils
-  function searchAppliances(search) {
+  function searchAppliances(search, appliancesList) {
     // Filtrer la liste des appareils en fonction de la recherche de l'utilisateur
-    const filteredAppliances = appliancesList.filter(appliance =>
+    const filteredAppliances = appliancesList.filter((appliance) =>
       appliance.toLowerCase().includes(search.toLowerCase())
     );
     return filteredAppliances;
   }
   
   // Fonction pour rechercher dans la liste des ustensiles
-  function searchUstensils(search) {
+  function searchUstensils(search, ustensilsList) {
     // Filtrer la liste des ustensiles en fonction de la recherche de l'utilisateur
-    const filteredUstensils = ustensilsList.filter(ustensil =>
+    const filteredUstensils = ustensilsList.filter((ustensil) =>
       ustensil.toLowerCase().includes(search.toLowerCase())
     );
     return filteredUstensils;

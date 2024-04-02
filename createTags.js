@@ -10,6 +10,9 @@ const labelsearchTagsContainer = document.querySelector(".labelsearch-tags");
 export const selectListItem = function (li) {
   const containerSelectedTag = document.createElement("div");
   containerSelectedTag.classList.add("container-selected-tag");
+
+  // Stocker une référence à l'élément li en tant que propriété de containerSelectedTag
+  containerSelectedTag.liElement = li;
   // Vérifier si l'élément est déjà sélectionné
   if (!li.classList.contains("selected-tag")) {
     // Ajouter la classe "selected-tag" à l'élément li
@@ -118,6 +121,27 @@ function moveTagToTop(selectedTag, index) {
     deleteIcon.classList.replace("fa-square-xmark", "fa-xmark");
   });
 
+  // Ajout d'un écouteur d'événement pour le clic sur .fa-square-xmark
+  deleteIcon.addEventListener("click", function (event) {
+    event.stopPropagation(); // Empêcher la propagation de l'événement de clic au parent
+    const li = selectedTag.liElement; // Récupérer la référence à l'élément li
+    // Supprimer la classe "selected-tag" de l'élément li
+    li.classList.remove("selected-tag");
+    // Supprimer la div container-selected-tag
+    selectedTag.remove();
+    // Supprimer la copie du tag dans labelsearchTagsContainer en fonction de son index
+    const index = li.getAttribute("data-index");
+    const selectedTagCopy = labelsearchTagsContainer.querySelector(
+      `.selected-tag-copy[data-index="${index}"]`
+    );
+    if (selectedTagCopy) {
+      selectedTagCopy.remove();
+    }
+    // Réinsérer l'élément li à son emplacement initial dans la liste
+    const list = document.querySelector(".list-group");
+    list.appendChild(li);
+  });
+
   labelsearchTagsContainer.appendChild(selectedTagCopy); // Ajouter la copie du tag à .labelsearch-tags
 }
 
@@ -199,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Fonction pour rechercher dans la liste des ingrédients
-function searchIngredients(search) {
+function searchIngredients(search, ingredientsList) {
   // Filtrer la liste des ingrédients en fonction de la recherche de l'utilisateur
   const filteredIngredients = ingredientsList.filter((ingredient) =>
     ingredient.toLowerCase().includes(search.toLowerCase())
@@ -208,7 +232,7 @@ function searchIngredients(search) {
 }
 
 // Fonction pour rechercher dans la liste des appareils
-function searchAppliances(search) {
+function searchAppliances(search, appliancesList) {
   // Filtrer la liste des appareils en fonction de la recherche de l'utilisateur
   const filteredAppliances = appliancesList.filter((appliance) =>
     appliance.toLowerCase().includes(search.toLowerCase())
@@ -217,7 +241,7 @@ function searchAppliances(search) {
 }
 
 // Fonction pour rechercher dans la liste des ustensiles
-function searchUstensils(search) {
+function searchUstensils(search, ustensilsList) {
   // Filtrer la liste des ustensiles en fonction de la recherche de l'utilisateur
   const filteredUstensils = ustensilsList.filter((ustensil) =>
     ustensil.toLowerCase().includes(search.toLowerCase())
@@ -241,21 +265,21 @@ function searchingTags() {
   // Ajout d'écouteurs d'événements 'input' pour détecter les changements dans la valeur des inputs de recherche
   searchInputIngredients.addEventListener("input", async function (event) {
     const search = event.target.value.trim();
-    const filteredIngredients = searchIngredients(search);
+    const filteredIngredients = searchIngredients(search, ingredientsList);
     // Mettre à jour l'interface avec les ingrédients filtrés
     updateInterface(filteredIngredients);
   });
 
   searchInputAppliances.addEventListener("input", async function (event) {
     const search = event.target.value.trim();
-    const filteredAppliances = searchAppliances(search);
+    const filteredAppliances = searchAppliances(search, appliancesList);
     // Mettre à jour l'interface avec les appareils filtrés
     updateInterface(filteredAppliances);
   });
 
   searchInputUstensils.addEventListener("input", async function (event) {
     const search = event.target.value.trim();
-    const filteredUstensils = searchUstensils(search);
+    const filteredUstensils = searchUstensils(search, ustensilsList);
     // Mettre à jour l'interface avec les ustensiles filtrés
     updateInterface(filteredUstensils);
   });

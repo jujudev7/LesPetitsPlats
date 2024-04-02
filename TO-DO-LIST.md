@@ -55,7 +55,9 @@
 ✅ clear search tags  
 ✅ Open tag
 ✅ Delete tag
-❌ Pblm Tags au clic
+✅ Pblm Tags au clic
+✅ Capitalize items
+✅ delete-icon added in labelsearch tags
 
 ## LOGIQUE ALGORITHMIQUE 🧠
 ✅ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
@@ -63,7 +65,7 @@
 ✅  Implémenter la première version de son algorithme de recherche. Il sera plus naturel de commencer par implémenter la recherche simple, 
 ✅ - puis la recherche par tags.   
 ❌ Répéter la procédure pour la 2ème implémentation.  
-❌ Comparaison des résultats des algorithmes via un outil de benchmark comme jsben.ch, jsbench.me, jsperf.com.  
+❌ JSBENCH : Comparaison des résultats des algorithmes via un outil de benchmark comme jsben.ch, jsbench.me, jsperf.com.  
 
 ## RESPONSIVE DESIGN ➡️
 ❌ Media queries
