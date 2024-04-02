@@ -1,7 +1,10 @@
-// Importer les données de recettes depuis le fichier JavaScript
+// Importer les données de recettes depuis le fichier recipes.js
 import { recipes } from "./recipes.js";
-// Importer la fonction createRecipeCard depuis le fichier JavaScript recipeCard.js
+// Importer la fonction createRecipeCard depuis le fichier recipeCard.js
 import { createRecipeCard } from "./createRecipeCard.js";
+// Importer les fonctions nécessaires depuis le fichier createTags.js
+import { selectListItem } from "./createTags.js";
+import { createList } from "./createTags.js";
 
 // Fonction pour rechercher les recettes correspondant à la recherche de l'utilisateur
 function searchRecipes(search) {
@@ -32,7 +35,6 @@ function searchRecipes(search) {
 // Fonction pour actualiser l'interface du site avec les recettes trouvées
 function updateInterface(recipes) {
   const error = document.querySelector(".error");
-  //   const resultsContainer = document.querySelector(".results");
   const cardsContainer = document.querySelector(".grid-cards");
 
   // Supprimer les résultats précédents
@@ -51,7 +53,83 @@ function updateInterface(recipes) {
       // Ajouter la carte de recette à l'interface utilisateur
       cardsContainer.appendChild(recipeCard);
     });
+
+    // Mettre à jour les tags des filtres de recherche
+    updateFilters(recipes);
   }
+}
+
+// Fonction pour mettre à jour les tags des filtres de recherche
+function updateFilters(recipes) {
+  const ingredientsList = getUniqueIngredients(recipes);
+  const appliancesList = getUniqueAppliances(recipes);
+  const ustensilsList = getUniqueUstensils(recipes);
+
+  console.log("Ingredients List:", ingredientsList);
+  console.log("Appliances List:", appliancesList);
+  console.log("Ustensils List:", ustensilsList);
+
+  // Supprimer les anciennes listes des filtres de recherche
+  removeOldLists();
+
+  // Mettre à jour les listes des filtres de recherche avec les nouveaux éléments
+  updateList("collapseIngredients", ingredientsList, selectListItem);
+  updateList("collapseAppliances", appliancesList, selectListItem);
+  updateList("collapseUtensils", ustensilsList, selectListItem);
+}
+
+// Fonction pour récupérer les ingrédients uniques des recettes restantes
+function getUniqueIngredients(recipes) {
+  const ingredients = new Set();
+  recipes.forEach((recipe) => {
+    recipe.ingredients.forEach((ingredient) => {
+      ingredients.add(ingredient.ingredient);
+    });
+  });
+  const uniqueIngredients = Array.from(ingredients);
+  console.log("Ingrédients uniques :", uniqueIngredients); // Ajout du console.log pour afficher les ingrédients uniques
+  return uniqueIngredients;
+}
+
+// Fonction pour récupérer les appareils uniques des recettes restantes
+function getUniqueAppliances(recipes) {
+  const appliances = new Set();
+  recipes.forEach((recipe) => {
+    appliances.add(recipe.appliance);
+  });
+  const uniqueAppliances = Array.from(appliances);
+  console.log("Appareils uniques :", uniqueAppliances); // Ajout du console.log pour afficher les appareils uniques
+  return uniqueAppliances;
+}
+
+// Fonction pour récupérer les ustensiles uniques des recettes restantes
+function getUniqueUstensils(recipes) {
+  const ustensils = new Set();
+  recipes.forEach((recipe) => {
+    recipe.ustensils.forEach((ustensil) => {
+      ustensils.add(ustensil);
+    });
+  });
+  const uniqueUstensils = Array.from(ustensils);
+  console.log("Ustensiles uniques :", uniqueUstensils); // Ajout du console.log pour afficher les ustensiles uniques
+  return uniqueUstensils;
+}
+
+
+// Fonction pour supprimer les anciennes listes des filtres de recherche
+function removeOldLists() {
+  // Supprimer les anciennes listes des filtres de recherche
+  const lists = document.querySelectorAll(".accordion-body ul");
+  lists.forEach(list => {
+    list.innerHTML = "";
+  });
+}
+
+// Fonction pour mettre à jour une liste des filtres de recherche avec de nouveaux éléments
+function updateList(id, items, onClickCallback) {
+  const accordionBody = document.getElementById(id);
+  const listElement = createList(items, onClickCallback);
+  accordionBody.querySelector(".accordion-body").appendChild(listElement);
 }
 
 // Fonction principale pour exécuter l'algorithme
