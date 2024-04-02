@@ -5,6 +5,8 @@ import { recipes } from "./recipes.js";
 const selectedTagsContainer = document.createElement("div");
 selectedTagsContainer.classList.add("selected-tags");
 
+const labelsearchTagsContainer = document.querySelector(".labelsearch-tags");
+
 export const selectListItem = function (li) {
   const containerSelectedTag = document.createElement("div");
   containerSelectedTag.classList.add("container-selected-tag");
@@ -25,6 +27,12 @@ export const selectListItem = function (li) {
       li.classList.remove("selected-tag");
       // Supprimer la div container-selected-tag
       containerSelectedTag.remove();
+      // Supprimer la copie du tag dans labelsearchTagsContainer en fonction de son index
+      const index = li.getAttribute("data-index");
+      const selectedTagCopy = labelsearchTagsContainer.querySelector(`.selected-tag-copy[data-index="${index}"]`);
+      if (selectedTagCopy) {
+        selectedTagCopy.remove();
+      }
       // Réinsérer l'élément li à son emplacement initial dans la liste
       const list = document.querySelector(".list-group");
       list.appendChild(li);
@@ -48,6 +56,9 @@ export const selectListItem = function (li) {
       // Rendre l'icône invisible lorsque le survol se termine
       icon.style.visibility = "hidden";
     });
+
+    // Déplacer le tag sélectionné à l'intérieur de <div class="labelsearch-tags"></div>
+    moveTagToTop(containerSelectedTag, li.getAttribute("data-index"));
   }
 };
 
@@ -68,6 +79,16 @@ export function createList(items, onClickCallback) {
     ul.appendChild(li);
   });
   return ul;
+}
+
+// Fonction pour déplacer le tag sélectionné au-dessus de la liste des li
+function moveTagToTop(selectedTag, index) {
+  selectedTagsContainer.appendChild(selectedTag); // Déplacer le tag sélectionné à l'intérieur du conteneur
+  // Créer une copie de l'élément sélectionné pour l'ajouter à la balise <div class="labelsearch-tags"></div>
+  const selectedTagCopy = selectedTag.cloneNode(true);
+  selectedTagCopy.classList.add("selected-tag-copy"); // Ajouter une classe spécifique à la copie du tag
+  selectedTagCopy.dataset.index = index; // Ajouter l'index comme attribut de données à la copie du tag
+  labelsearchTagsContainer.appendChild(selectedTagCopy);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -131,11 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelector(".accordion-body")
     .appendChild(ustensilsListElement);
 
-  // Fonction pour déplacer le tag sélectionné au-dessus de la liste des li
-  function moveTagToTop(selectedTag) {
-    selectedTagsContainer.appendChild(selectedTag); // Déplacer le tag sélectionné à l'intérieur du conteneur
-  }
-
   // Fonction pour gérer le clic sur un tag sélectionné
   const handleTagClick = function (selectedTag) {
     moveTagToTop(selectedTag);
@@ -145,5 +161,75 @@ document.addEventListener("DOMContentLoaded", function () {
   const selectedTags = document.querySelectorAll(".selected-tag");
   selectedTags.forEach((tag) => {
     selectedTagsContainer.appendChild(tag);
+
+    // Créer une copie de l'élément sélectionné pour l'ajouter à la balise <div class="labelsearch-tags"></div>
+    const tagCopy = tag.cloneNode(true);
+    labelsearchTagsContainer.appendChild(tagCopy);
   });
 });
+
+// Fonction pour rechercher dans la liste des ingrédients
+function searchIngredients(search) {
+  // Filtrer la liste des ingrédients en fonction de la recherche de l'utilisateur
+  const filteredIngredients = ingredientsList.filter((ingredient) =>
+    ingredient.toLowerCase().includes(search.toLowerCase())
+  );
+  return filteredIngredients;
+}
+
+// Fonction pour rechercher dans la liste des appareils
+function searchAppliances(search) {
+  // Filtrer la liste des appareils en fonction de la recherche de l'utilisateur
+  const filteredAppliances = appliancesList.filter((appliance) =>
+    appliance.toLowerCase().includes(search.toLowerCase())
+  );
+  return filteredAppliances;
+}
+
+// Fonction pour rechercher dans la liste des ustensiles
+function searchUstensils(search) {
+  // Filtrer la liste des ustensiles en fonction de la recherche de l'utilisateur
+  const filteredUstensils = ustensilsList.filter((ustensil) =>
+    ustensil.toLowerCase().includes(search.toLowerCase())
+  );
+  return filteredUstensils;
+}
+
+// Fonction principale pour exécuter l'algorithme de recherche
+function searchingTags() {
+  // Sélection des éléments input de recherche pour chaque catégorie
+  const searchInputIngredients = document.getElementById(
+    "search-input-ingredients"
+  );
+  const searchInputAppliances = document.getElementById(
+    "search-input-appliances"
+  );
+  const searchInputUstensils = document.getElementById(
+    "search-input-ustensils"
+  );
+
+  // Ajout d'écouteurs d'événements 'input' pour détecter les changements dans la valeur des inputs de recherche
+  searchInputIngredients.addEventListener("input", async function (event) {
+    const search = event.target.value.trim();
+    const filteredIngredients = searchIngredients(search);
+    // Mettre à jour l'interface avec les ingrédients filtrés
+    updateInterface(filteredIngredients);
+  });
+
+  searchInputAppliances.addEventListener("input", async function (event) {
+    const search = event.target.value.trim();
+    const filteredAppliances = searchAppliances(search);
+    // Mettre à jour l'interface avec les appareils filtrés
+    updateInterface(filteredAppliances);
+  });
+
+  searchInputUstensils.addEventListener("input", async function (event) {
+    const search = event.target.value.trim();
+    const filteredUstensils = searchUstensils(search);
+    // Mettre à jour l'interface avec les ustensiles filtrés
+    updateInterface(filteredUstensils);
+  });
+}
+
+// Appel de la fonction principale pour démarrer le processus de recherche
+searchingTags();

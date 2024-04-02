@@ -191,6 +191,9 @@ main {
   margin-right: 20px;
   z-index: 1;
 }
+.accordion-item {
+  border: none;
+}
 
 .accordion-button {
   font-family: "Manrope", sans-serif;
@@ -231,6 +234,24 @@ main {
 
 /* TAGS SELECTED */
 
+.labelsearch-tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+
+.labelsearch-tags .container-selected-tag {
+  width: auto;
+}
+
+.labelsearch-tags .list-group-item.selected-tag {
+  width: auto;
+  padding: 17px 18px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
 .selected-tags {
   width: 100%;
   display: flex;
@@ -257,6 +278,10 @@ main {
   right: 13px;
 }
 
+.fa-circle-xmark:hover {
+  cursor: pointer;
+}
+
 .list-group {
   margin-top: 12px;
 }
@@ -270,11 +295,15 @@ main {
   border: none;
   padding-left: 1.5em;
   line-height: 1em;
+  cursor: pointer;
+}
+
+.list-group-item.selected-tag {
+  cursor: revert;
 }
 
 li:hover {
   font-weight: bold;
-  cursor: pointer;
   background: #ffd15b;
 }
 
@@ -285,8 +314,6 @@ li:hover {
   /* font-size: 21px; */
   font-size: 1.3em;
 }
-
-
 
 .delete-tag-icon {
   color: #1b1b1b;
@@ -303,7 +330,7 @@ li:hover {
 /* CARDS */
 
 .cards {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .grid-cards {
