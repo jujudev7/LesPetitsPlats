@@ -151,19 +151,22 @@ function moveTagToTop(selectedTag, index) {
 }
 
 document.addEventListener("click", function (event) {
+  const filtersArea = document.querySelector(".filters");
   const accordionButtons = document.querySelectorAll(".accordion-button");
-
   accordionButtons.forEach(accordionButton => {
     // Vérifier si l'accordéon est ouvert et si le clic n'est pas sur l'accordéon lui-même
     if (
       accordionButton.classList.contains("collapsed") === false &&
-      !accordionButton.contains(event.target)
+      !filtersArea.contains(event.target)
     ) {
       // Fermer l'accordéon uniquement s'il est déjà ouvert
       accordionButton.click();
     }
   });
 });
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // Créer selectedTagsContainer si ce n'est pas déjà fait
