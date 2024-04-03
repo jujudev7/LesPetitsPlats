@@ -216,7 +216,7 @@ main {
 .accordion-body {
   position: relative;
   font-size: 14px;
-  padding: 0;
+  padding: 0 0 10px 0;
 }
 
 .clear-search-icon-ingredients,
@@ -269,6 +269,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  display: none;
 }
 
 .container-selected-tag {
@@ -300,6 +301,11 @@ main {
 .list-group-item:first-child {
   border-top-left-radius: revert;
   border-top-right-radius: revert;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: revert;
+  border-bottom-left-radius: revert;
 }
 
 .list-group-item {
