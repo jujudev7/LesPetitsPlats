@@ -46,7 +46,7 @@ export function updateFilters(recipes) {
   // Mettre à jour les listes des filtres de recherche avec les nouveaux éléments
   updateList("collapseIngredients", ingredientsList, selectListItem);
   updateList("collapseAppliances", appliancesList, selectListItem);
-  updateList("collapseUtensils", ustensilsList, selectListItem);
+  updateList("collapseUstensils", ustensilsList, selectListItem);
 }
 
 // Fonction pour supprimer les anciennes listes des filtres de recherche

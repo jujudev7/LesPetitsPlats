@@ -42,6 +42,8 @@
 ✅ Poids images réduit 
 ✅ Faire cours Algorithmes 
 
+❌ Retrouver icone pour supprimer tag dans accordion
+❌ Si j'écris aaa : 0 résultat, si je supprime des caractères, les recettes ne réapparaissent pas
 ❌ Cibler Thon rouge (ou blanc) & Champignons de paris, d'autres ? (font-size ?)
 ❌ Sticky Filters
 ❌ Fontawesome seulement icones nécessaires  
