@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Afficher/cacher l'icône de suppression au chargement de la page
     toggleClearIcon();
 
-
     const searchInputIngredients = document.getElementById("search-input-ingredients");
     const clearSearchIconIngredients = document.querySelector(".clear-search-icon-ingredients");
 
