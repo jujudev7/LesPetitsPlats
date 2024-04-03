@@ -151,19 +151,15 @@ function moveTagToTop(selectedTag, index) {
 }
 
 document.addEventListener("click", function (event) {
-  const filtersArea = document.querySelector(".filters");
-  const accordionButtons = document.querySelectorAll(
-    "#accordionIngredients .accordion-button, #accordionAppliances .accordion-button, #accordionUtensils .accordion-button"
-  );
-  console.log("Zone des filtres sélectionnée :", filtersArea);
-  console.log("Clic détecté");
-  // Vérifier si l'accordéon est ouvert et si le clic n'est pas dans la zone des filtres
+  const accordionButtons = document.querySelectorAll(".accordion-button");
+
   accordionButtons.forEach(accordionButton => {
+    // Vérifier si l'accordéon est ouvert et si le clic n'est pas sur l'accordéon lui-même
     if (
-      accordionButton.getAttribute("aria-expanded") === "true" &&
-      !filtersArea.contains(event.target)
+      accordionButton.classList.contains("collapsed") === false &&
+      !accordionButton.contains(event.target)
     ) {
-      // Fermer l'accordéon en simulant un clic sur le bouton d'accordéon
+      // Fermer l'accordéon uniquement s'il est déjà ouvert
       accordionButton.click();
     }
   });
