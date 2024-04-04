@@ -43,6 +43,7 @@
 ✅ Faire cours Algorithmes 
 
 ❌ Retrouver icone pour supprimer tag dans accordion
+❌ Bordure-radius 11px accordion + shadow
 ❌ Si j'écris aaa : 0 résultat, si je supprime des caractères, les recettes ne réapparaissent pas
 ❌ Cibler Thon rouge (ou blanc) & Champignons de paris, d'autres ? (font-size ?)
 ❌ Sticky Filters
