@@ -158,10 +158,11 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 16px;
   color: #7451eb;
   background: #ffffff;
-  margin-top: 20px;
   padding: 5px 10px;
   font-weight: 500;
   display: none;
+  position: absolute;
+  bottom: -50px;
 }
 
 /* MAIN */
