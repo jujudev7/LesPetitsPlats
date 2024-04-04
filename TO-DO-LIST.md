@@ -42,14 +42,15 @@
 ✅ Poids images réduit 
 ✅ Faire cours Algorithmes 
 
+✅ Régler problème msg error fait bouger le reste 
 ❌ Retrouver icone pour supprimer tag dans accordion
+❌ Bordure-radius 11px accordion + shadow
 ❌ Si j'écris aaa : 0 résultat, si je supprime des caractères, les recettes ne réapparaissent pas
 ❌ Cibler Thon rouge (ou blanc) & Champignons de paris, d'autres ? (font-size ?)
 ❌ Sticky Filters
 ❌ Fontawesome seulement icones nécessaires  
 ❌ Séparer et minifier le CSS  
 ❌ Régler problème largeur cards  
-❌ Régler problème msg error fait bouger le reste 
 ❌ Replacer tag dans liste par rapport à son index ? 
 
 ## JAVASCRIPT
