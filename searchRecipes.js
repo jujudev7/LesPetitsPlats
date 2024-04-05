@@ -2,6 +2,9 @@
 import { recipes } from "./recipes.js";
 import { initializeSearching } from "./eventInitialization.js";
 
+// Référence à toutes les recettes
+export const allRecipes = recipes;
+
 // Fonction pour rechercher les recettes correspondant à la recherche de l'utilisateur
 export function searchRecipes(search) {
   // Convertir la recherche en minuscules pour une correspondance insensible à la casse

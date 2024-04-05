@@ -3,6 +3,10 @@ import { getUniqueIngredients, getUniqueAppliances, getUniqueUstensils } from '.
 import { selectListItem } from "./createTags.js";
 import { createList } from "./createTags.js";
 
+export function displayAllRecipes() {
+  updateInterface(allRecipes);
+}
+
 // Fonction pour actualiser l'interface du site avec les recettes trouvées
 export function updateInterface(recipes) {
   const error = document.querySelector(".error");
