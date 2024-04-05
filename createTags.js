@@ -3,7 +3,7 @@ import { recipes } from "./recipes.js";
 
 // Déclaration de selectedTagsContainer en dehors de la fonction DOMContentLoaded
 const selectedTagsContainer = document.createElement("div");
-selectedTagsContainer.classList.add("selected-tags");
+// selectedTagsContainer.classList.add("selected-tags");
 
 const labelsearchTagsContainer = document.querySelector(".labelsearch-tags");
 
@@ -19,6 +19,7 @@ export function createList(items, onClickCallback) {
     li.textContent = capitalizedItem;
     li.setAttribute("data-index", index); // Ajouter l'index comme attribut
     li.addEventListener("click", function () {
+      console.log("000000000001: ");
       onClickCallback(li); // Utiliser l'élément li cliqué pour créer le tag sélectionné
     });
     ul.appendChild(li);
@@ -167,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-  
 
   // Créer la liste des ingrédients
   const ingredientsList = recipes.reduce((acc, recipe) => {
