@@ -1,0 +1,512 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap");
+/* font-family: "Manrope", sans-serif;
+   font-family: "Anton", sans-serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh; /* assure que le body prend tout l'espace vertical disponible  */
+  margin: 0;
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  width: 100%;
+  height: 667px;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/images/ramen-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top -205px left 0;
+  filter: brightness(50%);
+}
+
+.content {
+  position: relative; /* Assurez-vous que le contenu reste empilé sur l'élément ::before */
+  z-index: 1; /* Assurez-vous que le contenu soit empilé sur l'élément ::before */
+}
+
+.logo {
+  position: absolute;
+  width: 207px;
+  height: 25.26px;
+  top: 51px;
+  left: 69px;
+}
+
+h1 {
+  font-family: "Anton", sans-serif;
+  color: #ffd15b !important;
+  font-size: 2.75em;
+  width: 720px;
+}
+/* 
+form {
+} */
+
+.input-group > .form-control:focus,
+.input-group > .form-floating:focus-within,
+.input-group > .form-select:focus {
+  z-index: 0;
+}
+
+.input-group {
+  position: relative;
+}
+
+#principal-search {
+  width: 954px !important;
+  height: 72px;
+  padding: 0 40px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #7a7a7a;
+  margin-left: 50px;
+}
+
+.btn-search {
+  position: absolute;
+  top: 0;
+  right: 60px;
+  background: #1b1b1b;
+  width: 51px;
+  height: 52px;
+  background-image: url("assets/icons/magnifying-glass.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-search:hover {
+  background: #ffd15b;
+  background-image: url("assets/icons/magnifying-glass-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+main {
+  background: #ededed;
+}
+
+.container {
+  margin: 0 104px;
+}
+.filters-zone {
+  padding-top: 21px;
+}
+
+.accordion {
+  width: 195px;
+  height: 56px;
+  margin-right: 63px;
+  border: none;
+  z-index: 1;
+}
+
+.accordion-item {
+  border: none;
+  -webkit-box-shadow: 0px 1px 6px 0px #ededed;
+  box-shadow: 0px 1px 3px 0px #ededed;
+}
+
+.accordion-button {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1b1b1b !important;
+  padding: 17px 16px 17px 16px;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-body {
+  padding: 17px 16px 17px 16px;
+}
+
+.btn-filter {
+  background: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1b1b1b;
+}
+
+.nb-recipes {
+  font-family: "Anton", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  color: #1b1b1b;
+}
+
+#ingredients-search::placeholder,
+#appliances-searchh::placeholder,
+#ustensils-searchh::placeholder {
+  color: #ededed;
+}
+
+#ingredients-search,
+#appliances-search,
+#ustensils-search {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7a7a7a;
+  border-radius: 2px !important;
+  margin-bottom: 15px;
+}
+
+.form-control:focus {
+  color: #7a7a7a;
+  box-shadow: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.fa-xmark {
+  font-size: 10px;
+  color: #7a7a7a;
+  position: absolute;
+  right: 30px;
+  top: 13px;
+}
+
+.small-icon-search {
+  position: absolute;
+  right: 10px;
+  top: 11px;
+}
+
+.list-group-item {
+  border: none;
+  padding: 5px 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1b1b1b;
+}
+
+.tags-selected {
+  display: none;
+}
+
+/* CARDS */
+
+.cards {
+  padding-bottom: 80px;
+}
+/* .search-principal.form-control:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.searchbar {
+  width: 954px;
+  height: 72px;
+  position: relative;
+}
+
+.searchbar-small {
+  width: 177px;
+  height: 36px;
+  padding-left: 11px;
+}
+
+.search-principal::placeholder {
+  color: #c6c6c6;
+}
+
+.search-text::placeholder {
+  color: #c6c6c6;
+}
+
+.search-principal {
+  color: #7a7a7a;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 35px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #c6c6c6;
+}
+
+.search-text {
+  color: #7a7a7a;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 2px;
+} */
+
+/* Cible l'icône de suppression dans un input de type recherche */
+/* input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.input-group .btn {
+  z-index: 5;
+}
+
+.clear-search-icon {
+  position: absolute;
+  right: 130px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #7a7a7a;
+  display: none;
+  cursor: pointer;
+} */
+
+/* .btn-search {
+  position: absolute;
+  right: 62px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  background: #1b1b1b;
+  border: none;
+  background-image: url("assets/icons/magnifying-glass.svg");
+  background-size: 27px 28px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+} */
+
+/* .btn-search:hover {
+  background: #ffd15b;
+  background-image: url("assets/icons/magnifying-glass-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-search-small {
+  position: absolute;
+  background-image: url("assets/icons/magnifying-glass-small.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.error {
+  font-size: 16px;
+  color: #7451eb;
+  background: #ffffff;
+  padding: 5px 10px;
+  font-weight: 500;
+  display: none;
+  position: absolute;
+  bottom: -50px;
+} */
+
+/* MAIN */
+
+/* .filters-zone {
+  justify-content: space-between;
+  margin-bottom: 20px;
+} */
+
+/* TAGS SELECTED */
+
+/* .labelsearch-tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+
+.labelsearch-tags .container-selected-tag {
+  width: auto;
+  background: #ffd15b;
+  border-radius: 11px;
+  margin-right: 12px;
+}
+
+.labelsearch-tags .list-group-item.selected-tag {
+  width: auto;
+  padding: 17px 0px 17px 18px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.fa-xmark {
+  padding-right: 15px;
+}
+
+.fa-square-xmark {
+  padding-right: 13px;
+}
+
+.fa-circle-xmark {
+  position: absolute;
+  right: 13px;
+}
+
+.fa-circle-xmark:hover {
+  cursor: pointer;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: revert;
+  border-top-right-radius: revert;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: revert;
+  border-bottom-left-radius: revert;
+}
+
+.list-group-item {
+  border: none;
+  padding-left: 1.5em;
+  line-height: 1em;
+  cursor: pointer;
+}
+
+.list-group-item.selected-tag {
+  cursor: revert;
+}
+
+li:hover {
+  font-weight: bold;
+  background: #ffd15b;
+}
+
+.nb-recipes {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  color: #1b1b1b;
+  font-size: 1.3em;
+}
+
+.delete-tag-icon {
+  color: #1b1b1b;
+  font-size: 16px;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.delete-tag-icon:hover {
+  color: red;
+  transform: scale(1.1);
+} */
+
+/* CARDS */
+/* 
+.cards {
+  margin-top: 30px;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 48px;
+}
+
+.col-md-4 {
+  margin-bottom: 66px;
+}
+
+.card {
+  width: 380px;
+  height: 731px;
+  border: none;
+  box-shadow: 0px 4px 34px 30px #0000000a;
+  border-radius: 21px;
+}
+
+.card-img {
+  width: 380px;
+  height: 253px;
+  object-fit: cover;
+  border-radius: 21px 21px 0 0;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.badge {
+  position: absolute;
+  top: 21px;
+  right: 18px;
+  background: #ffd15b;
+  color: #1b1b1b;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  width: 63px;
+  height: 26px;
+  padding: 6px 15px 5px 15px;
+}
+
+.card-title {
+  font-family: "Anton", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 30px 0;
+}
+
+.card-recipe,
+.card-ingredients {
+  font-family: "Manrope", sans-serif;
+  color: #7a7a7a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 15px 0;
+}
+
+.card-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.card-ingredient {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.card-quantity {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7a7a7a;
+} */
