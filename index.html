@@ -41,6 +41,7 @@
               placeholder="Rechercher une recette, un ingrédient, ..."
               aria-label="Recherche"
             />
+            <i class="fa-solid fa-xmark delete-principal-search-icon delete-search" data-input="principal-search"></i>
             <button class="btn btn-search rounded" type="submit"></button>
           </div>
           <span class="error"></span>
@@ -49,7 +50,8 @@
     </header>
 
     <main>
-      <div class="container">
+      <div class="container main-container mx-auto">
+        <!-- FILTERS  -->
         <section
           class="filters-zone d-flex justify-content-between align-items-center"
         >
@@ -83,7 +85,9 @@
                           placeholder="|"
                           aria-label="Recherche"
                         />
-                        <i class="fa-solid fa-xmark"></i>
+                        <i
+                          class="fa-solid fa-xmark delete-search-accordion-icon delete-search" data-input="ingredients-search"
+                        ></i>
                         <img
                           src="assets/icons/magnifying-glass-small.svg"
                           class="small-icon-search"
@@ -92,6 +96,12 @@
                       </div>
                       <span class="error"></span>
                     </form>
+                    <div class="tags-selected d-flex align-items-center">
+                      <li class="list-group-item tag-selected">Tag selected</li>
+                      <i
+                        class="fa-solid fa-circle-xmark delete-tag-selected-icon"
+                      ></i>
+                    </div>
                     <ul class="list-group list-group-ingredients">
                       <li class="list-group-item">An item</li>
                       <li class="list-group-item">A second item</li>
@@ -133,7 +143,9 @@
                           placeholder="|"
                           aria-label="Recherche"
                         />
-                        <i class="fa-solid fa-xmark"></i>
+                        <i
+                          class="fa-solid fa-xmark delete-search-accordion-icon delete-search" data-input="appliances-search"
+                        ></i>
                         <img
                           src="assets/icons/magnifying-glass-small.svg"
                           class="small-icon-search"
@@ -183,7 +195,9 @@
                           placeholder="|"
                           aria-label="Recherche"
                         />
-                        <i class="fa-solid fa-xmark"></i>
+                        <i
+                          class="fa-solid fa-xmark delete-search-accordion-icon delete-search" data-input="ustensils-search"
+                        ></i>
                         <img
                           src="assets/icons/magnifying-glass-small.svg"
                           class="small-icon-search"
@@ -206,18 +220,113 @@
           </div>
           <span class="nb-recipes text-end">1500 recettes</span>
         </section>
-        <div class="tags-selected">
-          <span class="tag-selected rounded"
-            >Crème de coco
+        <div class="labels-search-selected d-inline-flex align-items-center">
+          <button type="button" class="btn labelsearch-selected">
+            <span class="labelsearch-selected-text"> Crème de coco </span>
             <i
-              class="fa-solid fa-xmark delete-tag-icon"
+              class="fa-solid fa-xmark delete-labelsearch-icon"
               aria-hidden="true"
               aria-label="Supprimer l'élément"
-            ></i
-          ></span>
+            ></i>
+          </button>
+          <button type="button" class="btn labelsearch-selected">
+            <span class="labelsearch-selected-text"> Ail </span>
+            <i
+              class="fa-solid fa-xmark delete-labelsearch-icon"
+              aria-hidden="true"
+              aria-label="Supprimer l'élément"
+            ></i>
+          </button>
         </div>
+        <!-- CARDS  -->
         <section class="cards">
-          <!-- Vos cartes de recettes ici -->
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                <img
+                  src="/assets/images/damier-check.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-heading">RECETTE</h6>
+                  <p class="card-text">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </p>
+                  <h6 class="card-heading">INGRÉDIENTS</h6>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-6 p-0 mb-4 d-flex flex-column">
+                        <span class="card-ingredient">Lait</span>
+                        <span class="card-quantity">400ml</span>
+                      </div>
+                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
+
+                      <!-- Force next columns to break to new line -->
+                      <div class="w-100"></div>
+
+                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
+                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="/assets/images/damier-check.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="/assets/images/damier-check.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="/assets/images/damier-check.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </main>
@@ -226,5 +335,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="delete-input-icon.js"></script>
   </body>
 </html>
