@@ -13,7 +13,8 @@
 
 # DESIGN 🎨
 
-❌ Utiliser Bootstrap 
+✅ Utiliser Bootstrap 
+✅ Favicon
 
 ## HEADER
 ✅ logo  
@@ -27,7 +28,7 @@
 ✅ Filtre Ingrédients  
 ✅ Filtre Appareils  
 ✅ Filtre Ustensiles  
-❌  1500 recettes  
+❌ 1500 recettes  
 ❌ Card  
 ✅ Dropdown recherche d'ingrédients  
 ❌  Tag selected

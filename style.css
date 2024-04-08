@@ -274,6 +274,10 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
+.delete-tag-selected-icon:hover {
+  display: block;
+}
+
 .tag-selected {
   background: #ffd15b;
   width: 100%;
@@ -344,6 +348,9 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
 }
 
 .card-img-top {
+  width: 380px;
+  height: 253px;
+  object-fit: cover;
   border-top-left-radius: 21px;
   border-top-right-radius: 21px;
 }
@@ -386,115 +393,28 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   color: #7a7a7a;
 }
 
-/* .cards {
-  padding-bottom: 80px;
-} */
-
-/* .search-principal.form-control:focus {
-  border: none;
-  box-shadow: none;
-}
-
-.searchbar {
-  width: 954px;
-  height: 72px;
-  position: relative;
-}
-
-.searchbar-small {
-  width: 177px;
-  height: 36px;
-  padding-left: 11px;
-}
-
-.search-principal::placeholder {
-  color: #c6c6c6;
-}
-
-.search-text::placeholder {
-  color: #c6c6c6;
-}
-
-.search-principal {
-  color: #7a7a7a;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding-left: 35px;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  border: 1px solid #c6c6c6;
-}
-
-.search-text {
-  color: #7a7a7a;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 2px;
-} */
-
-/* Cible l'icône de suppression dans un input de type recherche */
-/* input[type="search"]::-webkit-search-cancel-button {
-  display: none;
-}
-
-.input-group .btn {
-  z-index: 5;
-}
-
-.clear-search-icon {
+.time-badge {
   position: absolute;
-  right: 130px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: #7a7a7a;
-  display: none;
-  cursor: pointer;
-} */
-
-/* .btn-search {
-  position: absolute;
-  right: 62px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  background: #1b1b1b;
-  border: none;
-  background-image: url("assets/icons/magnifying-glass.svg");
-  background-size: 27px 28px;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-} */
-
-/* .btn-search:hover {
+  top: 21px;
+  right: 18px;
   background: #ffd15b;
-  background-image: url("assets/icons/magnifying-glass-hover.svg");
-  background-repeat: no-repeat;
-  background-position: center;
+  color: #1b1b1b;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  width: 65px;
+  height: 26px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 14px;
 }
 
-.btn-search-small {
-  position: absolute;
-  background-image: url("assets/icons/magnifying-glass-small.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  top: 50%;
-  right: 25px;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  padding: 0;
+/* Supprimer les max-width par défaut des container Bootstrap */
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  max-width: none !important;
 }
 
-.error {
+/* .error {
   font-size: 16px;
   color: #7451eb;
   background: #ffffff;
@@ -503,56 +423,9 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   display: none;
   position: absolute;
   bottom: -50px;
-} */
+}  */
 
-/* MAIN */
-
-/* .filters-zone {
-  justify-content: space-between;
-  margin-bottom: 20px;
-} */
-
-/* TAGS SELECTED */
-
-/* .labelsearch-tags {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-bottom: 40px;
-}
-
-.labelsearch-tags .container-selected-tag {
-  width: auto;
-  background: #ffd15b;
-  border-radius: 11px;
-  margin-right: 12px;
-}
-
-.labelsearch-tags .list-group-item.selected-tag {
-  width: auto;
-  padding: 17px 0px 17px 18px;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-
-.fa-xmark {
-  padding-right: 15px;
-}
-
-.fa-square-xmark {
-  padding-right: 13px;
-}
-
-.fa-circle-xmark {
-  position: absolute;
-  right: 13px;
-}
-
-.fa-circle-xmark:hover {
-  cursor: pointer;
-}
-
-.list-group-item:first-child {
+/* .list-group-item:first-child {
   border-top-left-radius: revert;
   border-top-right-radius: revert;
 }
@@ -560,22 +433,6 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
 .list-group-item:last-child {
   border-bottom-right-radius: revert;
   border-bottom-left-radius: revert;
-}
-
-.list-group-item {
-  border: none;
-  padding-left: 1.5em;
-  line-height: 1em;
-  cursor: pointer;
-}
-
-.list-group-item.selected-tag {
-  cursor: revert;
-}
-
-li:hover {
-  font-weight: bold;
-  background: #ffd15b;
 }
 
 .nb-recipes {
@@ -597,55 +454,7 @@ li:hover {
   transform: scale(1.1);
 } */
 
-/* CARDS */
-/* 
-.cards {
-  margin-top: 30px;
-}
 
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 48px;
-}
-
-.col-md-4 {
-  margin-bottom: 66px;
-}
-
-.card {
-  width: 380px;
-  height: 731px;
-  border: none;
-  box-shadow: 0px 4px 34px 30px #0000000a;
-  border-radius: 21px;
-}
-
-.card-img {
-  width: 380px;
-  height: 253px;
-  object-fit: cover;
-  border-radius: 21px 21px 0 0;
-}
-
-.card-body {
-  padding: 25px;
-}
-
-.badge {
-  position: absolute;
-  top: 21px;
-  right: 18px;
-  background: #ffd15b;
-  color: #1b1b1b;
-  font-family: "Manrope", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  text-align: center;
-  width: 63px;
-  height: 26px;
-  padding: 6px 15px 5px 15px;
-}
 
 .card-title {
   font-family: "Anton", sans-serif;
