@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -33,19 +33,14 @@
           CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET
           DÉLICIEUSES
         </h1>
-        <form class="d-flex" role="search">
-          <div class="input-group align-items-center">
-            <input
-              id="principal-search"
-              class="rounded form-control"
-              type="search"
-              placeholder="Rechercher une recette, un ingrédient, ..."
-              aria-label="Recherche"
-            />
-            <!-- <i class="fa-solid fa-xmark delete-principal-search-icon delete-search" data-input="principal-search"></i> -->
-            <button class="btn btn-search rounded" type="submit"></button>
+        <form class="d-flex flex-column" role="search">
+          <div class="position-relative">
+            <div class="input-group align-items-center">
+              <input id="principal-search" class="rounded form-control" type="search" placeholder="Rechercher une recette, un ingrédient, ..." aria-label="Recherche" />
+              <button class="btn btn-search rounded" type="submit"></button>
+            </div>
+            <span class="error text-center position-absolute top-100 start-50 translate-middle mt-4"></span>
           </div>
-          <span class="error"></span>
         </form>
       </div>
     </header>
@@ -92,7 +87,6 @@
                           alt=""
                         />
                       </div>
-                      <span class="error"></span>
                     </form>
                     <div class="tags-selected d-flex align-items-center">
                       <li class="list-group-item tag-selected">Tag selected</li>
@@ -147,7 +141,6 @@
                           alt=""
                         />
                       </div>
-                      <span class="error"></span>
                     </form>
                     <ul class="list-group list-group-appliances">
                       <li class="list-group-item">An item</li>
@@ -196,7 +189,6 @@
                           alt=""
                         />
                       </div>
-                      <span class="error"></span>
                     </form>
                     <ul class="list-group list-group-ustensils">
                       <li class="list-group-item">An item</li>
@@ -232,93 +224,7 @@
         </div>
         <!-- CARDS  -->
         <section class="cards">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- <div class="col">
-              <div class="card">
-                <img
-                  src="/assets/images/damier-check.png"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-heading">RECETTE</h6>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                  <h6 class="card-heading">INGRÉDIENTS</h6>
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-6 p-0 mb-4 d-flex flex-column">
-                        <span class="card-ingredient">Lait</span>
-                        <span class="card-quantity">400ml</span>
-                      </div>
-                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
-
-                      Force next columns to break to new line
-                      <div class="w-100"></div>
-
-                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
-                      <div class="col-6 p-0">.col-6 .col-sm-3</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img
-                  src="/assets/images/damier-check.png"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img
-                  src="/assets/images/damier-check.png"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img
-                  src="/assets/images/damier-check.png"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                </div>
-              </div>
-            </div> -->
-          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4"></div>
         </section>
       </div>
     </main>
@@ -328,5 +234,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="factory/cardFactory.js"></script>
+    <script type="module" src="principalSearch.js"></script>
   </body>
 </html>
