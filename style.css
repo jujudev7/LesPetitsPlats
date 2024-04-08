@@ -19,7 +19,6 @@ body {
 header {
   position: relative;
   width: 100%;
-  height: 667px;
 }
 
 header::before {
@@ -29,10 +28,10 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("assets/images/ramen-bg.jpg");
+  background-image: url("assets/images/les-petits-plats-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top -205px left 0;
+  background-position: top -214px left 0;
   filter: brightness(50%);
 }
 
@@ -81,7 +80,7 @@ form {
   margin-left: 50px;
 }
 
-.delete-principal-search-icon {
+/* .delete-principal-search-icon {
   position: absolute;
   right: 145px;
   color: #7a7a7a;
@@ -89,7 +88,7 @@ form {
   display: none;
   cursor: pointer;
 } 
-
+*/
 
 .btn-search {
   position: absolute;
@@ -101,12 +100,7 @@ form {
   background-image: url("assets/icons/magnifying-glass.svg");
   background-repeat: no-repeat;
   background-position: center;
-}
-
-#principal-search::-webkit-search-cancel-button,
-#principal-search::-webkit-search-decoration {
-  background-color: red;
-}
+} 
 
 .btn-search:hover {
   background: #ffd15b;
@@ -198,8 +192,27 @@ main {
   box-shadow: none;
 }
 
-input[type="search"]::-webkit-search-cancel-button {
+input[type="search"]#principal-search::-webkit-search-cancel-button {
   appearance: none;
+  background: url(./assets/icons/erase-search.svg) no-repeat center center;
+  height: 13px;
+  width: 13px;
+  right: 75px;
+  cursor: pointer;
+  position: absolute;
+}
+
+input[type="search"]#ingredients-search::-webkit-search-cancel-button,
+input[type="search"]#appliances-search::-webkit-search-cancel-button,
+input[type="search"]#ustensils-search::-webkit-search-cancel-button {
+  appearance: none;
+  background: url(./assets/icons/erase-small-search.svg) no-repeat center center;
+  stroke-width: 1px;
+  height: 6px;
+  width: 6px;
+  right: 27px;
+  cursor: pointer;
+  position: absolute;
 }
 
 /* input[type="search"]#principal-search {
