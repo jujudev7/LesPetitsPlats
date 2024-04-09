@@ -28,16 +28,14 @@
 ✅ Filtre Ingrédients  
 ✅ Filtre Appareils  
 ✅ Filtre Ustensiles  
-❌ 1500 recettes  
-❌ Card  
+✅ 1500 recettes  
+✅ Card  
 ✅ Dropdown recherche d'ingrédients  
 ❌  Tag selected
 ✅ .li-item  
-✅ Croix search-mini  
 ✅ Faire cours Green IT  
 
-❌  Cursor pointer sur clear/delete  
-❌  Cards    
+✅ Cards    
 ❌  Réaliser l’interface de la page web    
 ✅ Poids images réduit 
 ✅ Faire cours Algorithmes 
@@ -45,13 +43,10 @@
 ❌ Cibler Thon rouge (ou blanc) & Champignons de paris, d'autres ? (font-size ?)
 ❌ Sticky Filters
 ❌ Fontawesome seulement icones nécessaires  
-❌ Séparer et minifier le CSS  
-❌ Régler problème largeur cards  
+❌ Séparer et minifier le CSS   
 ❌ Replacer tag dans liste par rapport à son index ? 
 
 ## JAVASCRIPT
-❌ clear search  
-❌ clear search tags  
 ❌ Open tag
 ❌ Delete tag
 ❌ Capitalize items

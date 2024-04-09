@@ -80,16 +80,6 @@ form {
   margin-left: 50px;
 }
 
-/* .delete-principal-search-icon {
-  position: absolute;
-  right: 145px;
-  color: #7a7a7a;
-  font-size: 1.3em;
-  display: none;
-  cursor: pointer;
-} 
-*/
-
 .btn-search {
   position: absolute;
   top: 0;
@@ -345,11 +335,12 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   height: 731px;
   margin: 20px 0;
   border-radius: 21px;
+  border: none;
 }
 
 .card-img-top {
-  width: 380px;
-  height: 253px;
+  width: 100%;
+  height: 33.3%;
   object-fit: cover;
   border-top-left-radius: 21px;
   border-top-right-radius: 21px;
@@ -371,7 +362,7 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   margin-bottom: 15px;
 }
 
-.card-text {
+.card-description {
   font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -409,21 +400,25 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   border-radius: 14px;
 }
 
+.card[data-id='14'] .time-badge {
+  padding: 5px 12px 5px 12px;
+}
+
 /* Supprimer les max-width par défaut des container Bootstrap */
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
   max-width: none !important;
 }
 
-/* .error {
+.error {
   font-size: 16px;
-  color: #7451eb;
+  /* color: #7451eb; */
   background: #ffffff;
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-weight: 500;
+  margin: 0 auto;
+  border-radius: 21px;
   display: none;
-  position: absolute;
-  bottom: -50px;
-}  */
+} 
 
 /* .list-group-item:first-child {
   border-top-left-radius: revert;
@@ -452,47 +447,4 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
 .delete-tag-icon:hover {
   color: red;
   transform: scale(1.1);
-} */
-
-
-
-.card-title {
-  font-family: "Anton", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  margin: 30px 0;
-}
-
-.card-recipe,
-.card-ingredients {
-  font-family: "Manrope", sans-serif;
-  color: #7a7a7a;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  margin: 15px 0;
-}
-
-.card-text {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #000000;
-  margin-bottom: 30px;
-}
-
-.card-ingredient {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 0;
-}
-
-.card-quantity {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #7a7a7a;
 } */
