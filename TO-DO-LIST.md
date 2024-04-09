@@ -30,9 +30,9 @@
 ✅ Filtre Ustensiles  
 ✅ 1500 recettes  
 ✅ Card  
-✅ Dropdown recherche d'ingrédients  
-❌  Tag selected
-✅ .li-item  
+❌ Dropdown recherche d'ingrédients  
+❌ Tag selected
+❌ .li-item  
 ✅ Faire cours Green IT  
 
 ✅ Cards    
