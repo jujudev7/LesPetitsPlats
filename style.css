@@ -126,7 +126,6 @@ main {
   border: none;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
-  border-radius: 10px !important;
 }
 
 .accordion-button {
@@ -134,7 +133,8 @@ main {
   font-weight: 500;
   color: #1b1b1b !important;
   padding: 17px 16px 17px 16px;
-  border-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
 }
 
 .accordion-button:hover {
@@ -152,6 +152,7 @@ main {
 .accordion-body {
   padding: 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0 0 10px 10px;;
 }
 
 .nb-recipes {
@@ -225,15 +226,16 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   top: 27px;
 }
 
-.list-group-item:first-child {
+/* .list-group-item:first-child {
   border-top-left-radius: revert;
   border-top-right-radius: revert;
-}
+} */
 
-.list-group-item:last-child {
-  border-bottom-right-radius: revert;
-  border-bottom-left-radius: revert;
-}
+/* .list-group-item:last-child {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+} */
+
 
 .list-group-item {
   border: none;
@@ -419,32 +421,3 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   border-radius: 21px;
   display: none;
 } 
-
-/* .list-group-item:first-child {
-  border-top-left-radius: revert;
-  border-top-right-radius: revert;
-}
-
-.list-group-item:last-child {
-  border-bottom-right-radius: revert;
-  border-bottom-left-radius: revert;
-}
-
-.nb-recipes {
-  font-family: "Anton", sans-serif;
-  font-weight: 400;
-  color: #1b1b1b;
-  font-size: 1.3em;
-}
-
-.delete-tag-icon {
-  color: #1b1b1b;
-  font-size: 16px;
-  padding-left: 25px;
-  cursor: pointer;
-}
-
-.delete-tag-icon:hover {
-  color: red;
-  transform: scale(1.1);
-} */
