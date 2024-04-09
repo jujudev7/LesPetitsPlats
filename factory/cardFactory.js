@@ -30,7 +30,7 @@ export function generateRecipeCards(recipes) {
 
     // Construire le contenu de la carte en utilisant les données de la recette actuelle
     cardDiv.innerHTML = `
-      <article class="card" data-id=${id}>
+      <article class="card" id=${id}>
       <img src="../../assets/images/recipes/${image}" class="card-img-top" alt="${name}">
       <div class="cookingTimeContainer">
         <span class="time-badge">${time}min</span>
@@ -64,19 +64,19 @@ export function generateRecipeCards(recipes) {
     cardContainer.appendChild(cardDiv);
   });
 
-  // Sélectionner l'élément titre de la carte avec data-id égal à 9
-  const titleCardId9 = document.querySelector(".card[data-id='9'] .card-title");
+  // Sélectionner l'élément titre de la carte avec id égal à 9
+  const titleCardId9 = document.querySelector(".card[id='9'] .card-title");
 
   // Vérifier si l'élément a été trouvé
   if (titleCardId9) {
     titleCardId9.style.fontSize = "17.8px";
   } else {
-    console.log("Aucune carte avec data-id égal à 9 n'a été trouvée.");
+    console.log("Aucune carte avec id égal à 9 n'a été trouvée.");
   }
 
-  // Sélectionner l'élément description de la carte avec data-id égal à 9
+  // Sélectionner l'élément description de la carte avec id égal à 9
   const descriptionCardId14 = document.querySelector(
-    ".card[data-id='14'] .card-description"
+    ".card[id='14'] .card-description"
   );
 
   // Vérifier si l'élément a été trouvé
@@ -87,6 +87,6 @@ export function generateRecipeCards(recipes) {
         ? descriptionCardId14.textContent.substring(0, 135) + "..."
         : descriptionCardId14.textContent;
   } else {
-    console.log("Aucune carte avec data-id égal à 14 n'a été trouvée.");
+    console.log("Aucune carte avec id égal à 14 n'a été trouvée.");
   }
 }

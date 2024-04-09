@@ -231,11 +231,11 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   border-top-right-radius: revert;
 } */
 
-/* .list-group-item:last-child {
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-} */
 
+
+ul {
+  padding-bottom: 10px;
+}
 
 .list-group-item {
   border: none;
@@ -251,6 +251,11 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   background: #ffd15b;
   width: 100%;
   font-weight: 700;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: revert;
+  border-bottom-left-radius: revert;
 }
 
 .tags-selected {
@@ -402,7 +407,7 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   border-radius: 14px;
 }
 
-.card[data-id='14'] .time-badge {
+.card[id='14'] .time-badge {
   padding: 5px 12px 5px 12px;
 }
 
