@@ -30,12 +30,17 @@ export function tagSelection() {
     ".ustensils-tags-selected"
   );
 
+  const labelsSearchSelected = document.querySelector(
+    ".labels-search-selected"
+  );
+  
   // Fonction pour mettre à jour la visibilité de chaque .tags-selected spécifique
   function updateTagsSelectedVisibility(
     ingredientsTagsSelected,
     appliancesTagsSelected,
     ustensilsTagsSelected
   ) {
+
     // Vérifier si chaque .tags-selected contient des éléments enfants
     if (ingredientsTagsSelected.children.length > 0) {
       ingredientsTagsSelected.style.display = "block"; // Afficher .ingredients-tags-selected s'il y a des éléments enfants
@@ -60,6 +65,13 @@ export function tagSelection() {
     } else {
       ustensilsTagsSelected.style.display = "none"; // Cacher .ustensils-tags-selected s'il n'y a pas d'éléments enfants
       ustensilsTagsSelected.style.marginBottom = "0px";
+    }
+
+    // Vérifier si .labels-search-selected contient des éléments enfants
+    if (labelsSearchSelected.children.length > 0) {
+      labelsSearchSelected.style.display = "block"; // Afficher .labels-search-selected s'il y a des éléments enfants
+    } else {
+      labelsSearchSelected.style.display = "none"; // Cacher .labels-search-selected s'il n'y a pas d'éléments enfants
     }
   }
 
@@ -89,6 +101,9 @@ export function tagSelection() {
 
     // Ajouter la copie de l'élément <li> à la liste .tags-selected spécifique
     addTagToSelectedList(clickedItem, specificClass);
+
+    // Ajouter le tag à la liste .labels-search-selected
+    addTagToLabelsSearch(clickedItem, "labels-search-selected");
 
     // Supprimer temporairement l'élément <li> de .list-group
     clickedItem.style.display = "none";
@@ -134,6 +149,40 @@ export function tagSelection() {
 
     // Ajouter la copie de l'élément <li>  à la liste .tags-selected
     tagsSelected.appendChild(clickedItemCopy);
+  }
+
+  // Fonction pour ajouter un tag à une liste spécifiée avec un bouton
+  function addTagToLabelsSearch(clickedItem, className) {
+    const clickedItemCopy = clickedItem.cloneNode(true);
+    const tagsSelected = document.querySelector(`.${className}`);
+
+    // Créer le bouton
+    const button = document.createElement("button");
+    button.type = "button";
+    button.classList.add("btn", "labelsearch-selected");
+
+    // Créer l'icône de suppression
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa-solid", "fa-xmark", "delete-labelsearch-icon");
+    deleteIcon.setAttribute("aria-hidden", "true");
+    deleteIcon.setAttribute("aria-label", "Supprimer l'élément");
+
+    // Ajouter un gestionnaire d'événements clic pour supprimer le tag lorsqu'il est cliqué
+    deleteIcon.addEventListener("click", function (event) {
+      event.stopPropagation(); // Empêcher la propagation de l'événement clic
+      tagsSelected.removeChild(button);
+      // Réafficher l'élément <li> dans .list-group après sa suppression dans .tags-selected
+      clickedItem.style.display = "block";
+      // Mettre à jour la visibilité des listes
+      updateTagsSelectedVisibility();
+    });
+
+    // Ajouter le texte du tag et l'icône de suppression au bouton
+    button.appendChild(clickedItemCopy);
+    button.appendChild(deleteIcon);
+
+    // Ajouter le bouton à la liste spécifiée
+    tagsSelected.appendChild(button);
   }
 
   // Sélectionner tous les éléments <li> dans les listes d'ingrédients, d'appareils et d'ustensiles
