@@ -114,6 +114,7 @@ main {
   padding-top: 21px;
   margin-right: 104px;
   margin-left: 104px;
+  margin-bottom: 30px;
 }
 
 .accordion {
@@ -311,8 +312,8 @@ ul {
 }
 
 .labels-search-selected {
-  margin: 20px 104px 50px 104px;
-  display: none;
+  display: none !important;
+  margin: -10px 104px;
 }
 
 .labelsearch-selected {
@@ -342,8 +343,8 @@ button:active {
   background: unset;
 }
 
-.labelsearch-selected .list-group-item {
-}
+/* .labelsearch-selected .list-group-item {
+} */
 
 .labelsearch-selected:hover .list-group-item {
   color: #ffd15b;
@@ -369,7 +370,7 @@ button:active {
 /* CARDS */
 
 .cards {
-  margin-top: -30px;
+  margin-top: 55px;
   margin-right: 104px;
   margin-bottom: 200px;
   margin-left: 104px;

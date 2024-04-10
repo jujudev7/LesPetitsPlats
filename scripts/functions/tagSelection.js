@@ -17,9 +17,7 @@ window.addEventListener("click", function (event) {
 });
 
 export function tagSelection() {
-  // Sélection de l'élément .tags-selected
-  const tagsSelected = document.querySelector(".tags-selected");
-
+  // Sélection des éléments .tags-selected sépcifiques + labelsearch
   const ingredientsTagsSelected = document.querySelector(
     ".ingredients-tags-selected"
   );
@@ -33,7 +31,7 @@ export function tagSelection() {
   const labelsSearchSelected = document.querySelector(
     ".labels-search-selected"
   );
-  
+
   // Fonction pour mettre à jour la visibilité de chaque .tags-selected spécifique
   function updateTagsSelectedVisibility(
     ingredientsTagsSelected,
