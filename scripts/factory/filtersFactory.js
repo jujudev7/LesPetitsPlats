@@ -1,4 +1,5 @@
-import { recipes } from "../data/recipes.js";
+import { recipes } from "../../data/recipes.js";
+import { tagSelection } from "../functions/tagSelection.js";
 
 //////////////////
 // INGREDIENTS //
@@ -157,19 +158,4 @@ function addUstensilsToList() {
 // Appeler la fonction pour ajouter les ustensiles à la liste
 addUstensilsToList();
 
-// Fermer les accordéons si l'utilisateur clique en dehors de l'élément accordéon
-window.addEventListener("click", function(event) {
-    const accordions = document.querySelectorAll(".accordion");
-
-    accordions.forEach(accordion => {
-        const isAccordionExpanded = accordion.querySelector(".accordion-collapse.show");
-        if (isAccordionExpanded && !accordion.contains(event.target)) {
-            const accordionButton = accordion.querySelector(".accordion-button");
-            accordionButton.classList.add("collapsed");
-            accordionButton.setAttribute("aria-expanded", "false");
-            const collapseElement = accordion.querySelector(".accordion-collapse");
-            collapseElement.classList.remove("show");
-        }
-    });
-});
-
+tagSelection();

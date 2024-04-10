@@ -90,7 +90,7 @@ form {
   background-image: url("assets/icons/magnifying-glass.svg");
   background-repeat: no-repeat;
   background-position: center;
-} 
+}
 
 .btn-search:hover {
   background: #ffd15b;
@@ -133,8 +133,7 @@ main {
   font-weight: 500;
   color: #1b1b1b !important;
   padding: 17px 16px 17px 16px;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
+  border-radius: 10px !important;
 }
 
 .accordion-button:hover {
@@ -152,7 +151,7 @@ main {
 .accordion-body {
   padding: 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 0 0 10px 10px;;
+  border-radius: 0 0 10px 10px;
 }
 
 .nb-recipes {
@@ -210,7 +209,7 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   color: red;
  } */
 
-.delete-search-accordion-icon {
+/* .delete-search-accordion-icon {
   font-size: 10px;
   color: #7a7a7a;
   position: absolute;
@@ -218,7 +217,7 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   top: 30px;
   display: none;
   cursor: pointer;
-}
+} */
 
 .small-icon-search {
   position: absolute;
@@ -231,10 +230,20 @@ input[type="search"]#ustensils-search::-webkit-search-cancel-button {
   border-top-right-radius: revert;
 } */
 
-
-
 ul {
-  padding-bottom: 10px;
+  padding-bottom: 0;
+}
+
+.tags-selected {
+  position: relative;
+  padding: 0;
+  display: none;
+  /* margin-bottom: 15px; */
+}
+
+.tags-selected > .list-group-item {
+  background: #ffd15b;
+  margin-bottom: 5px;
 }
 
 .list-group-item {
@@ -253,26 +262,34 @@ ul {
   font-weight: 700;
 }
 
+.list-group-item:hover .delete-tag-selected-icon {
+  display: block !important;
+}
+
+/* .selected-tag {
+  background: #ffd15b;
+  width: 100%;
+  font-weight: 700 !important;
+  margin-bottom: 5px;
+}
+
+.selected-tag:hover {
+  width: 100%;
+  font-weight: 700 !important;
+} */
+
 .list-group-item:last-child {
   border-bottom-right-radius: revert;
   border-bottom-left-radius: revert;
-}
-
-.tags-selected {
-  position: relative;
 }
 
 .delete-tag-selected-icon {
   position: absolute;
   font-size: 13px;
   right: 10px;
-  padding-bottom: 13px;
-  display: none;
+  top: 10px;
   cursor: pointer;
-}
-
-.delete-tag-selected-icon:hover {
-  display: block;
+  display: none;
 }
 
 .tag-selected {
@@ -282,8 +299,8 @@ ul {
   margin-bottom: 15px;
 }
 
-.tag-selected:hover + .delete-tag-selected-icon {
-  display: inline-block;
+.selected-tag:hover > .delete-tag-selected-icon {
+  display: block;
 }
 
 .list-group-item:first-child {
@@ -407,12 +424,17 @@ ul {
   border-radius: 14px;
 }
 
-.card[id='14'] .time-badge {
+.card[id="14"] .time-badge {
   padding: 5px 12px 5px 12px;
 }
 
 /* Supprimer les max-width par défaut des container Bootstrap */
-.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
   max-width: none !important;
 }
 
@@ -425,4 +447,4 @@ ul {
   margin: 0 auto;
   border-radius: 21px;
   display: none;
-} 
+}

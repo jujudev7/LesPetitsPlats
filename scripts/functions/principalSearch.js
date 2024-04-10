@@ -1,6 +1,5 @@
-import { recipes } from "./data/recipes.js";
-import { generateRecipeCards } from "./factory/cardFactory.js";
-// import { displayAllRecipes } from "./factory/cardFactory.js";
+import { recipes } from "../../data/recipes.js";
+import { generateRecipeCards } from "../factory/cardFactory.js";
 
 // Sélectionner les éléments HTML pertinents
 const searchInput = document.getElementById("principal-search");

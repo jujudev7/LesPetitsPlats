@@ -36,10 +36,18 @@
         <form class="d-flex flex-column" role="search">
           <div class="position-relative">
             <div class="input-group align-items-center">
-              <input id="principal-search" class="rounded form-control" type="search" placeholder="Rechercher une recette, un ingrédient, ..." aria-label="Recherche" />
+              <input
+                id="principal-search"
+                class="rounded form-control"
+                type="search"
+                placeholder="Rechercher une recette, un ingrédient, ..."
+                aria-label="Recherche"
+              />
               <button class="btn btn-search rounded" type="submit"></button>
             </div>
-            <span class="error text-center position-absolute top-100 start-50 translate-middle mt-4"></span>
+            <span
+              class="error text-center position-absolute top-100 start-50 translate-middle mt-4"
+            ></span>
           </div>
         </form>
       </div>
@@ -88,14 +96,9 @@
                         />
                       </div>
                     </form>
-                    <div class="tags-selected d-flex align-items-center">
-                      <!-- <li class="list-group-item tag-selected"></li>
-                      <i
-                        class="fa-solid fa-circle-xmark delete-tag-selected-icon"
-                      ></i> -->
+                    <div class="tags-selected ingredients-tags-selected">
                     </div>
-                    <ul class="list-group list-group-ingredients">
-                    </ul>
+                    <ul class="list-group list-group-ingredients"></ul>
                   </div>
                 </div>
               </div>
@@ -137,8 +140,9 @@
                         />
                       </div>
                     </form>
-                    <ul class="list-group list-group-appliances">
-                    </ul>
+                    <div class="tags-selected appliances-tags-selected">
+                    </div>
+                    <ul class="list-group list-group-appliances"></ul>
                   </div>
                 </div>
               </div>
@@ -180,8 +184,9 @@
                         />
                       </div>
                     </form>
-                    <ul class="list-group list-group-ustensils">
-                    </ul>
+                    <div class="tags-selected ustensils-tags-selected">
+                    </div>
+                    <ul class="list-group list-group-ustensils"></ul>
                   </div>
                 </div>
               </div>
@@ -218,8 +223,9 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="factory/cardFactory.js"></script>
-    <script type="module" src="factory/filtersFactory.js"></script>
-    <script type="module" src="principalSearch.js"></script>
+    <script type="module" src="scripts/factory/cardFactory.js"></script>
+    <script type="module" src="scripts/factory/filtersFactory.js"></script>
+    <script type="module" src="scripts/functions/principalSearch.js"></script>
+    <script type="module" src="scripts/functions/tagSelection.js"></script>
   </body>
 </html>
