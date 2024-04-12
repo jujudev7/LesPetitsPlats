@@ -16,35 +16,32 @@ window.addEventListener("click", function (event) {
   });
 });
 
+// Sélection des éléments .tags-selected sépcifiques + labelsearch
+const ingredientsTagsSelected = document.querySelector(
+  ".ingredients-tags-selected"
+);
+const appliancesTagsSelected = document.querySelector(
+  ".appliances-tags-selected"
+);
+const ustensilsTagsSelected = document.querySelector(
+  ".ustensils-tags-selected"
+);
+
+const labelsSearchSelected = document.querySelector(".labels-search-selected");
+
 export function tagSelection() {
-  // Sélection des éléments .tags-selected sépcifiques + labelsearch
-  const ingredientsTagsSelected = document.querySelector(
-    ".ingredients-tags-selected"
-  );
-  const appliancesTagsSelected = document.querySelector(
-    ".appliances-tags-selected"
-  );
-  const ustensilsTagsSelected = document.querySelector(
-    ".ustensils-tags-selected"
-  );
-
-  const labelsSearchSelected = document.querySelector(
-    ".labels-search-selected"
-  );
-
   // Fonction pour mettre à jour la visibilité de chaque .tags-selected spécifique
   function updateTagsSelectedVisibility(
     ingredientsTagsSelected,
     appliancesTagsSelected,
     ustensilsTagsSelected
   ) {
-
     // Vérifier si chaque .tags-selected contient des éléments enfants
     if (ingredientsTagsSelected.children.length > 0) {
       ingredientsTagsSelected.style.display = "block"; // Afficher .ingredients-tags-selected s'il y a des éléments enfants
       ingredientsTagsSelected.style.marginBottom = "15px";
     } else {
-      console.log("No ingredients tags selected");
+      // console.log("No ingredients tags selected");
       ingredientsTagsSelected.style.display = "none"; // Cacher .ingredients-tags-selected s'il n'y a pas d'éléments enfants
       ingredientsTagsSelected.style.marginBottom = "0px";
     }
@@ -80,9 +77,23 @@ export function tagSelection() {
     ustensilsTagsSelected
   );
 
+  // Fonction pour mettre à jour la visibilité de .labels-search-selected en fonction du nombre d'éléments enfants
+  function updateLabelsSearchVisibility() {
+    const labelSearch = document.querySelector(".labels-search-selected");
+    const buttonCount = labelSearch.querySelectorAll("button").length;
+
+    console.log(labelSearch.children.length);
+    if (buttonCount > 0) {
+      labelSearch.style.cssText = "display: block !important"; // Afficher labelsSearchSelected s'il y a des éléments enfants
+    } else {
+      labelSearch.style.cssText = "display: none !important"; // Cacher labelsSearchSelected s'il n'y a pas d'éléments enfants
+    }
+  }
+
   // Fonction pour gérer le clic sur un élément <li> dans .list-group
   function handleListItemClick(event) {
     const clickedItem = event.target;
+    // console.log("00000000001: ");
 
     // Trouver l'accordéon parent
     const accordion = clickedItem.closest(".accordion");
@@ -112,6 +123,7 @@ export function tagSelection() {
       appliancesTagsSelected,
       ustensilsTagsSelected
     );
+    updateLabelsSearchVisibility();
   }
 
   // Fonction pour ajouter un tag à la liste .tags-selected spécifique
@@ -131,7 +143,20 @@ export function tagSelection() {
     // Ajouter un gestionnaire d'événements clic pour supprimer le tag lorsqu'il est cliqué
     deleteIcon.addEventListener("click", function (event) {
       event.stopPropagation(); // Empêcher la propagation de l'événement clic
+
+      // Supprimer le tag de .tags-selected
       tagsSelected.removeChild(clickedItemCopy);
+
+      // Trouver le tag correspondant dans .labels-search-selected et le supprimer
+      const labelSearchItems = document.querySelectorAll(
+        ".labels-search-selected .list-group-item"
+      );
+      labelSearchItems.forEach((item) => {
+        if (item.textContent === clickedItem.textContent) {
+          item.closest(".labelsearch-selected").remove();
+        }
+      });
+
       // Réafficher l'élément <li> dans .list-group après sa suppression dans .tags-selected
       clickedItem.style.display = "block";
 
@@ -140,6 +165,9 @@ export function tagSelection() {
         appliancesTagsSelected,
         ustensilsTagsSelected
       );
+
+      // updateTagsLabelsVisibility();
+      updateLabelsSearchVisibility();
     });
 
     // Ajouter l'icône de suppression à la liste .tags-selected
@@ -150,9 +178,9 @@ export function tagSelection() {
   }
 
   // Fonction pour ajouter un tag à une liste spécifiée avec un bouton
-  function addTagToLabelsSearch(clickedItem, className) {
+  function addTagToLabelsSearch(clickedItem) {
     const clickedItemCopy = clickedItem.cloneNode(true);
-    const tagsSelected = document.querySelector(`.${className}`);
+    const labelSearch = document.querySelector(".labels-search-selected");
 
     // Créer le bouton
     const button = document.createElement("button");
@@ -168,11 +196,32 @@ export function tagSelection() {
     // Ajouter un gestionnaire d'événements clic pour supprimer le tag lorsqu'il est cliqué
     deleteIcon.addEventListener("click", function (event) {
       event.stopPropagation(); // Empêcher la propagation de l'événement clic
-      tagsSelected.removeChild(button);
+
+      // Supprimer le tag de .labels-search-selected
+      labelSearch.removeChild(button);
+
+      // Trouver le tag correspondant dans .tags-selected et le supprimer
+      const tagsSelectedItems = document.querySelectorAll(
+        ".tags-selected .list-group-item"
+      );
+      tagsSelectedItems.forEach((item) => {
+        if (item.textContent === clickedItem.textContent) {
+          item.closest(".tags-selected").removeChild(item);
+        }
+      });
+
       // Réafficher l'élément <li> dans .list-group après sa suppression dans .tags-selected
       clickedItem.style.display = "block";
+
       // Mettre à jour la visibilité des listes
-      updateTagsSelectedVisibility();
+      updateTagsSelectedVisibility(
+        ingredientsTagsSelected,
+        appliancesTagsSelected,
+        ustensilsTagsSelected
+      );
+
+      // updateTagsLabelsVisibility();
+      updateLabelsSearchVisibility();
     });
 
     // Ajouter le texte du tag et l'icône de suppression au bouton
@@ -180,7 +229,9 @@ export function tagSelection() {
     button.appendChild(deleteIcon);
 
     // Ajouter le bouton à la liste spécifiée
-    tagsSelected.appendChild(button);
+    labelSearch.appendChild(button);
+
+    updateLabelsSearchVisibility();
   }
 
   // Sélectionner tous les éléments <li> dans les listes d'ingrédients, d'appareils et d'ustensiles
@@ -189,15 +240,5 @@ export function tagSelection() {
   // Ajouter un gestionnaire d'événements clic à chaque élément <li> dans .list-group
   allListItems.forEach((listItem) => {
     listItem.addEventListener("click", handleListItemClick);
-  });
-
-  // Sélectionner tous les éléments <li> dans .tags-selected
-  const tagsSelectedItems = document.querySelectorAll(
-    ".tags-selected .list-group-item"
-  );
-
-  // Ajouter un gestionnaire d'événements clic à chaque élément <li> dans .tags-selected
-  tagsSelectedItems.forEach((tagItem) => {
-    tagItem.addEventListener("click", handleTagClick);
   });
 }
