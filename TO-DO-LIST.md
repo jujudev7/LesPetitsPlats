@@ -31,8 +31,8 @@
 ✅ 1500 recettes  
 ✅ Card  
 ❌ Dropdown recherche d'ingrédients  
-❌ Tag selected
-❌ .li-item  
+✅ Tag selected
+✅ .li-item  
 ✅ Faire cours Green IT  
 
 ✅ Cards    
@@ -47,10 +47,9 @@
 ❌ Replacer tag dans liste par rapport à son index ? 
 
 ## JAVASCRIPT
-❌ Open tag
-❌ Delete tag
-❌ Capitalize items
-❌ delete-icon added in labelsearch tags
+✅ Open tag
+✅ Delete tag
+✅ Capitalize items
 
 ## LOGIQUE ALGORITHMIQUE 🧠
 ❌ Travailler sur la logique de recherche et le document d’investigation de fonctionnalité.  
