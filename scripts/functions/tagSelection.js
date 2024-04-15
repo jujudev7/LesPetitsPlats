@@ -108,22 +108,29 @@ export function tagSelection() {
       specificClass = "ustensils-tags-selected";
     }
 
-    // Ajouter la copie de l'élément <li> à la liste .tags-selected spécifique
-    addTagToSelectedList(clickedItem, specificClass);
-
-    // Ajouter le tag à la liste .labels-search-selected
-    addTagToLabelsSearch(clickedItem, "labels-search-selected");
-
-    // Supprimer temporairement l'élément <li> de .list-group
-    clickedItem.style.display = "none";
-
-    // Appeler la fonction initiale pour mettre à jour la visibilité de chaque .tags-selected spécifique
-    updateTagsSelectedVisibility(
-      ingredientsTagsSelected,
-      appliancesTagsSelected,
-      ustensilsTagsSelected
+    // Vérifier si l'élément cliqué est déjà dans la liste .tags-selected
+    const isAlreadySelected = Array.from(labelsSearchSelected.children).find(
+      (item) => item.textContent.trim() === clickedItem.textContent.trim()
     );
-    updateLabelsSearchVisibility();
+
+    if (!isAlreadySelected) {
+      // Ajouter le tag à la liste .tags-selected spécifique
+      addTagToSelectedList(clickedItem, specificClass);
+
+      // Ajouter le tag à la liste .labels-search-selected
+      addTagToLabelsSearch(clickedItem, "labels-search-selected");
+
+      // Supprimer temporairement l'élément <li> de .list-group
+      clickedItem.style.display = "none";
+
+      // Appeler la fonction initiale pour mettre à jour la visibilité de chaque .tags-selected spécifique
+      updateTagsSelectedVisibility(
+        ingredientsTagsSelected,
+        appliancesTagsSelected,
+        ustensilsTagsSelected
+      );
+      updateLabelsSearchVisibility();
+    }
   }
 
   // Fonction pour ajouter un tag à la liste .tags-selected spécifique
@@ -179,8 +186,8 @@ export function tagSelection() {
 
   // Fonction pour ajouter un tag à une liste spécifiée avec un bouton
   function addTagToLabelsSearch(clickedItem) {
-    const clickedItemCopy = clickedItem.cloneNode(true);
     const labelSearch = document.querySelector(".labels-search-selected");
+    const clickedItemCopy = clickedItem.cloneNode(true);
 
     // Créer le bouton
     const button = document.createElement("button");
