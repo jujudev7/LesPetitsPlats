@@ -102,6 +102,13 @@ form {
   background-position: center;
 }
 
+.btn-search:active {
+  background: #7451eb !important;
+  background-image: url("assets/icons/magnifying-glass.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
 main {
   background: #ededed;
 }

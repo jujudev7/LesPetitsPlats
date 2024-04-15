@@ -175,6 +175,125 @@ searchInput.addEventListener("input", () => {
   tagSelection(); // Appel de la fonction tagSelection après chaque filtrage
 });
 
+// Sélection des éléments des champs de recherche spécifiques à chaque accordion
+const ingredientsSearchInput = document.getElementById("ingredients-search");
+const appliancesSearchInput = document.getElementById("appliances-search");
+const ustensilsSearchInput = document.getElementById("ustensils-search");
+
+// Fonction pour filtrer les tags spécifiques à chaque accordion en fonction de la recherche
+function filterTagsByAccordion(
+  searchInput,
+  filteredSet,
+  elementsArray,
+  elementType
+) {
+  const search = searchInput.value.trim().toLowerCase(); // Convertir la recherche en minuscules
+
+  // Réinitialiser les ensembles filtrés et les tableaux d'éléments
+  filteredSet.clear();
+  elementsArray = [];
+
+  recipes.forEach((recipe) => {
+    if (isRecipeMatchSearch(recipe)) {
+      if (elementType === "ingredient") {
+        recipe.ingredients.forEach((ingredient) => {
+          const formattedIngredient = formatString(
+            ingredient.ingredient
+          ).toLowerCase(); // Convertir l'élément en minuscules
+          if (
+            formattedIngredient.includes(search) &&
+            !filteredSet.has(formattedIngredient)
+          ) {
+            filteredSet.add(formattedIngredient);
+            const li = createListItem(ingredient.ingredient, elementType);
+            const id =
+              tagIds[formattedIngredient] || Object.keys(tagIds).length + 1;
+            li.id = id;
+            elementsArray.push(li);
+            if (!tagIds[formattedIngredient]) {
+              tagIds[formattedIngredient] = id;
+            }
+          }
+        });
+      } else if (elementType === "appliance") {
+        const formattedAppliance = formatString(recipe.appliance).toLowerCase(); // Convertir l'élément en minuscules
+        if (
+          formattedAppliance.includes(search) &&
+          !filteredSet.has(formattedAppliance)
+        ) {
+          filteredSet.add(formattedAppliance);
+          const li = createListItem(recipe.appliance, elementType);
+          const id =
+            tagIds[formattedAppliance] || Object.keys(tagIds).length + 1;
+          li.id = id;
+          elementsArray.push(li);
+          if (!tagIds[formattedAppliance]) {
+            tagIds[formattedAppliance] = id;
+          }
+        }
+      } else if (elementType === "ustensil") {
+        recipe.ustensils.forEach((ustensil) => {
+          const formattedUstensil = formatString(ustensil).toLowerCase(); // Convertir l'élément en minuscules
+          if (
+            formattedUstensil.includes(search) &&
+            !filteredSet.has(formattedUstensil)
+          ) {
+            filteredSet.add(formattedUstensil);
+            const li = createListItem(ustensil, elementType);
+            const id =
+              tagIds[formattedUstensil] || Object.keys(tagIds).length + 1;
+            li.id = id;
+            elementsArray.push(li);
+            if (!tagIds[formattedUstensil]) {
+              tagIds[formattedUstensil] = id;
+            }
+          }
+        });
+      }
+    }
+  });
+
+  // Mettre à jour la liste correspondante à l'accordion
+  if (elementType === "ingredient") {
+    ingredientsList.innerHTML = "";
+    elementsArray.forEach((element) => ingredientsList.appendChild(element));
+  } else if (elementType === "appliance") {
+    appliancesList.innerHTML = "";
+    elementsArray.forEach((element) => appliancesList.appendChild(element));
+  } else if (elementType === "ustensil") {
+    ustensilsList.innerHTML = "";
+    elementsArray.forEach((element) => ustensilsList.appendChild(element));
+  }
+}
+
+// Ajoutez des écouteurs d'événements pour chaque champ de recherche d'accordion
+ingredientsSearchInput.addEventListener("input", () => {
+  filterTagsByAccordion(
+    ingredientsSearchInput,
+    filteredIngredients,
+    ingredientsElements,
+    "ingredient"
+  );
+});
+
+appliancesSearchInput.addEventListener("input", () => {
+  filterTagsByAccordion(
+    appliancesSearchInput,
+    filteredAppliances,
+    appliancesElements,
+    "appliance"
+  );
+});
+
+ustensilsSearchInput.addEventListener("input", () => {
+  filterTagsByAccordion(
+    ustensilsSearchInput,
+    filteredUstensils,
+    ustensilsElements,
+    "ustensil"
+  );
+});
+
 // Appelez la fonction initiale pour afficher les tags et la sélection des tags
 filterTags();
 addIngredientsToList();
