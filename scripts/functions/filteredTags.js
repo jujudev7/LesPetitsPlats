@@ -222,7 +222,6 @@ searchInput.addEventListener("input", () => {
   addIngredientsToList();
   addAppliancesToList();
   addUstensilsToList();
-  tagSelection(); // Appel de la fonction tagSelection après chaque filtrage
 });
 
 // Sélection des éléments des champs de recherche spécifiques à chaque accordion

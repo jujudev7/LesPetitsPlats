@@ -44,6 +44,69 @@ function filterRecipes(search) {
   });
 }
 
+// Fonction pour mettre à jour les tags sélectionnés en fonction des résultats de la recherche principale
+function updateSelectedTags(filteredRecipes) {
+  // Récupérer tous les boutons contenant des tags sélectionnés actuellement
+  const selectedButtons = document.querySelectorAll(".labels-search-selected button");
+
+  // Parcourir tous les boutons contenant des tags sélectionnés
+  selectedButtons.forEach((button) => {
+    // Récupérer tous les li enfants du bouton
+    const liElements = button.querySelectorAll("li");
+
+    // Vérifier si tous les li sont vides
+    const allLiEmpty = Array.from(liElements).every(li => li.textContent.trim() === '');
+
+    if (allLiEmpty) {
+      // Si tous les li sont vides, supprimer le bouton
+      button.remove();
+    } else {
+      // Sinon, vérifier si au moins un tag est pertinent
+      const hasMatchingTag = Array.from(liElements).some(li => {
+        const tagName = li.textContent.trim().toLowerCase();
+        return filteredRecipes.some(recipe => {
+          return (
+            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() === tagName) ||
+            recipe.appliance.toLowerCase() === tagName ||
+            recipe.ustensils.some(ustensil => ustensil.toLowerCase() === tagName)
+          );
+        });
+      });
+
+      // Si aucun tag n'est pertinent, supprimer le bouton
+      if (!hasMatchingTag) {
+        button.remove();
+      }
+    }
+  });
+
+  // Récupérer tous les tags non sélectionnés
+  const allTags = document.querySelectorAll(".list-group-item");
+
+  // Parcourir tous les tags non sélectionnés
+  allTags.forEach((tag) => {
+    const tagName = tag.textContent.trim().toLowerCase();
+
+    // Vérifier si le tag est présent dans les recettes filtrées
+    const isTagInFilteredRecipes = filteredRecipes.some((recipe) => {
+      return (
+        recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase() === tagName) ||
+        recipe.appliance.toLowerCase() === tagName ||
+        recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === tagName)
+      );
+    });
+
+    if (isTagInFilteredRecipes) {
+      // Si le tag est pertinent, rendre le tag visible
+      tag.style.display = "block";
+    } else {
+      // Sinon, cacher le tag
+      tag.style.display = "none";
+    }
+  });
+}
+
+
 // Fonction pour afficher les recettes correspondantes
 function displayMatchingRecipes(search) {
   // Effacer les messages d'erreur précédents
@@ -80,6 +143,9 @@ function displayMatchingRecipes(search) {
     // Générer les cartes des recettes correspondantes
     generateRecipeCards(matchingRecipes);
     updateRecipeCount(matchingRecipes.length);
+
+    // Mettre à jour les tags sélectionnés en fonction des recettes filtrées
+    updateSelectedTags(matchingRecipes);
   }
 }
 
