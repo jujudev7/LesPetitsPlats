@@ -244,34 +244,36 @@ function restoreLabelsSearchVisibility() {
 // Fonction pour mettre à jour la visibilité de .labels-search-selected en fonction du nombre d'éléments enfants
 export function updateLabelsSearchVisibility() {
   const labelSearch = document.querySelector(".labels-search-selected");
-  const ingredientsTagsSelected = document.querySelector(
-    ".ingredients-tags-selected"
-  );
-  const appliancesTagsSelected = document.querySelector(
-    ".appliances-tags-selected"
-  );
-  const ustensilsTagsSelected = document.querySelector(
-    ".ustensils-tags-selected"
-  );
+  if (labelSearch) {
+    const ingredientsTagsSelected = document.querySelector(
+      ".ingredients-tags-selected"
+    );
+    const appliancesTagsSelected = document.querySelector(
+      ".appliances-tags-selected"
+    );
+    const ustensilsTagsSelected = document.querySelector(
+      ".ustensils-tags-selected"
+    );
 
-  const hasIngredientsSelection = ingredientsTagsSelected.children.length > 0;
-  const hasAppliancesSelection = appliancesTagsSelected.children.length > 0;
-  const hasUstensilsSelection = ustensilsTagsSelected.children.length > 0;
+    const hasIngredientsSelection = ingredientsTagsSelected.children.length > 0;
+    const hasAppliancesSelection = appliancesTagsSelected.children.length > 0;
+    const hasUstensilsSelection = ustensilsTagsSelected.children.length > 0;
 
-  // Vérifier si des éléments ont été sélectionnés dans les listes spécifiques
-  const hasSelection =
-    hasIngredientsSelection || hasAppliancesSelection || hasUstensilsSelection;
+    // Vérifier si des éléments ont été sélectionnés dans les listes spécifiques
+    const hasSelection =
+      hasIngredientsSelection ||
+      hasAppliancesSelection ||
+      hasUstensilsSelection;
 
-  // Vérifier si des tags sont déjà sélectionnés dans .labels-search-selected
-  const hasLabelsSearchSelection = labelSearch.children.length > 0;
+    // Vérifier si des tags sont déjà sélectionnés dans .labels-search-selected
+    const hasLabelsSearchSelection = labelSearch.children.length > 0;
 
-  console.log(labelSearch.children.length);
-
-  // Afficher ou masquer .labels-search-selected en fonction de la sélection
-  if (hasSelection || hasLabelsSearchSelection) {
-    labelSearch.style.cssText = "display: block !important"; // Afficher labelsSearchSelected s'il y a des éléments enfants
-  } else {
-    labelSearch.style.cssText = "display: none !important"; // Cacher labelsSearchSelected s'il n'y a pas d'éléments enfants
+    // Afficher ou masquer .labels-search-selected en fonction de la sélection
+    if (hasSelection || hasLabelsSearchSelection) {
+      labelSearch.style.cssText = "display: block !important"; // Afficher labelsSearchSelected s'il y a des éléments enfants
+    } else {
+      labelSearch.style.cssText = "display: none !important"; // Cacher labelsSearchSelected s'il n'y a pas d'éléments enfants
+    }
   }
 }
 
@@ -410,3 +412,4 @@ filterTags();
 addIngredientsToList();
 addAppliancesToList();
 addUstensilsToList();
+updateTagsSelectedVisibility();
