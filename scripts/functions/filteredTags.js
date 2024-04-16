@@ -1,5 +1,50 @@
 import { recipes } from "../../data/recipes.js";
-import { tagSelection } from "./tagSelection.js";
+import { handleListItemClick } from "./tagSelection.js";
+
+// Sélection des éléments .tags-selected sépcifiques + labelsearch
+const ingredientsTagsSelected = document.querySelector(
+  ".ingredients-tags-selected"
+);
+const appliancesTagsSelected = document.querySelector(
+  ".appliances-tags-selected"
+);
+const ustensilsTagsSelected = document.querySelector(
+  ".ustensils-tags-selected"
+);
+
+const labelsSearchSelected = document.querySelector(".labels-search-selected");
+
+// Fonction pour mettre à jour la visibilité de chaque .tags-selected spécifique
+function updateTagsSelectedVisibility() {
+  // Vérifier si chaque .tags-selected contient des éléments enfants
+  if (ingredientsTagsSelected.children.length > 0) {
+    ingredientsTagsSelected.style.display = "block"; // Afficher .ingredients-tags-selected s'il y a des éléments enfants
+    ingredientsTagsSelected.style.marginBottom = "15px";
+  } else {
+    // console.log("No ingredients tags selected");
+    ingredientsTagsSelected.style.display = "none"; // Cacher .ingredients-tags-selected s'il n'y a pas d'éléments enfants
+    ingredientsTagsSelected.style.marginBottom = "0px";
+  }
+
+  if (appliancesTagsSelected.children.length > 0) {
+    appliancesTagsSelected.style.display = "block"; // Afficher .appliances-tags-selected s'il y a des éléments enfants
+    appliancesTagsSelected.style.marginBottom = "15px";
+  } else {
+    appliancesTagsSelected.style.display = "none"; // Cacher .appliances-tags-selected s'il n'y a pas d'éléments enfants
+    appliancesTagsSelected.style.marginBottom = "0px";
+  }
+
+  if (ustensilsTagsSelected.children.length > 0) {
+    ustensilsTagsSelected.style.display = "block"; // Afficher .ustensils-tags-selected s'il y a des éléments enfants
+    ustensilsTagsSelected.style.marginBottom = "15px";
+  } else {
+    ustensilsTagsSelected.style.display = "none"; // Cacher .ustensils-tags-selected s'il n'y a pas d'éléments enfants
+    ustensilsTagsSelected.style.marginBottom = "0px";
+  }
+}
+
+// Déclaration et initialisation de labelSearchVisibilityState
+let labelSearchVisibilityState = true;
 
 // Sélection de l'élément de la barre de recherche
 const searchInput = document.getElementById("principal-search");
@@ -79,7 +124,7 @@ function formatString(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// Créez une fonction pour vérifier si une recette correspond à la recherche principale
+// Créer une fonction pour vérifier si une recette correspond à la recherche principale
 function isRecipeMatchSearch(recipe) {
   const search = searchInput.value.trim().toLowerCase();
   return (
@@ -90,7 +135,7 @@ function isRecipeMatchSearch(recipe) {
     recipe.description.toLowerCase().includes(search)
   );
 }
-// Créez une fonction pour filtrer les tags en fonction des recettes correspondantes à la recherche principale
+// Créer une fonction pour filtrer les tags en fonction des recettes correspondantes à la recherche principale
 function filterTags() {
   // Réinitialiser les ensembles filtrés
   filteredIngredients.clear();
@@ -155,18 +200,23 @@ function filterTags() {
   addIngredientsToList();
   addAppliancesToList();
   addUstensilsToList();
-  tagSelection(); // Appel de la fonction tagSelection après chaque filtrage
 }
 
-// Fonction pour créer un élément de liste
+// Fonction pour créer un élément de liste avec un gestionnaire d'événements clic attaché
 function createListItem(text, className) {
   const li = document.createElement("li");
   li.classList.add("list-group-item", className);
   li.textContent = text;
+
+  // Ajouter un gestionnaire d'événements clic
+  li.addEventListener("click", function (event) {
+    handleListItemClick(event); // Appeler la fonction de gestion du clic
+  });
+
   return li;
 }
 
-// Appelez la fonction pour filtrer les tags après chaque recherche principale
+// Appeler la fonction pour filtrer les tags après chaque recherche principale
 searchInput.addEventListener("input", () => {
   filterTags();
   addIngredientsToList();
@@ -180,6 +230,52 @@ const ingredientsSearchInput = document.getElementById("ingredients-search");
 const appliancesSearchInput = document.getElementById("appliances-search");
 const ustensilsSearchInput = document.getElementById("ustensils-search");
 
+const labelSearch = document.querySelector(".labels-search-selected");
+
+// Fonction pour restaurer l'état de visibilité de labelSearch
+function restoreLabelsSearchVisibility() {
+  // const labelSearch = document.querySelector(".labels-search-selected");
+  if (labelSearchVisibilityState) {
+    labelSearch.style.display = "block";
+  } else {
+    labelSearch.style.display = "none";
+  }
+}
+
+// Fonction pour mettre à jour la visibilité de .labels-search-selected en fonction du nombre d'éléments enfants
+export function updateLabelsSearchVisibility() {
+  const labelSearch = document.querySelector(".labels-search-selected");
+  const ingredientsTagsSelected = document.querySelector(
+    ".ingredients-tags-selected"
+  );
+  const appliancesTagsSelected = document.querySelector(
+    ".appliances-tags-selected"
+  );
+  const ustensilsTagsSelected = document.querySelector(
+    ".ustensils-tags-selected"
+  );
+
+  const hasIngredientsSelection = ingredientsTagsSelected.children.length > 0;
+  const hasAppliancesSelection = appliancesTagsSelected.children.length > 0;
+  const hasUstensilsSelection = ustensilsTagsSelected.children.length > 0;
+
+  // Vérifier si des éléments ont été sélectionnés dans les listes spécifiques
+  const hasSelection =
+    hasIngredientsSelection || hasAppliancesSelection || hasUstensilsSelection;
+
+  // Vérifier si des tags sont déjà sélectionnés dans .labels-search-selected
+  const hasLabelsSearchSelection = labelSearch.children.length > 0;
+
+  console.log(labelSearch.children.length);
+
+  // Afficher ou masquer .labels-search-selected en fonction de la sélection
+  if (hasSelection || hasLabelsSearchSelection) {
+    labelSearch.style.cssText = "display: block !important"; // Afficher labelsSearchSelected s'il y a des éléments enfants
+  } else {
+    labelSearch.style.cssText = "display: none !important"; // Cacher labelsSearchSelected s'il n'y a pas d'éléments enfants
+  }
+}
+
 // Fonction pour filtrer les tags spécifiques à chaque accordion en fonction de la recherche
 function filterTagsByAccordion(
   searchInput,
@@ -187,11 +283,19 @@ function filterTagsByAccordion(
   elementsArray,
   elementType
 ) {
-  const search = searchInput.value.trim().toLowerCase(); // Convertir la recherche en minuscules
+  restoreLabelsSearchVisibility(); // Restaure l'état de visibilité de labelSearch
 
   // Réinitialiser les ensembles filtrés et les tableaux d'éléments
   filteredSet.clear();
-  elementsArray = [];
+  elementsArray.length = 0;
+
+  const search = searchInput.value.trim().toLowerCase();
+
+  // Réinitialiser les éléments de recherche sélectionnés si l'élément de recherche principal est vide
+  if (search === "") {
+    labelSearch.classList.remove("labels-search-selected");
+    labelSearch.innerHTML = "";
+  }
 
   recipes.forEach((recipe) => {
     if (isRecipeMatchSearch(recipe)) {
@@ -199,7 +303,7 @@ function filterTagsByAccordion(
         recipe.ingredients.forEach((ingredient) => {
           const formattedIngredient = formatString(
             ingredient.ingredient
-          ).toLowerCase(); // Convertir l'élément en minuscules
+          ).toLowerCase();
           if (
             formattedIngredient.includes(search) &&
             !filteredSet.has(formattedIngredient)
@@ -216,7 +320,7 @@ function filterTagsByAccordion(
           }
         });
       } else if (elementType === "appliance") {
-        const formattedAppliance = formatString(recipe.appliance).toLowerCase(); // Convertir l'élément en minuscules
+        const formattedAppliance = formatString(recipe.appliance).toLowerCase();
         if (
           formattedAppliance.includes(search) &&
           !filteredSet.has(formattedAppliance)
@@ -233,7 +337,7 @@ function filterTagsByAccordion(
         }
       } else if (elementType === "ustensil") {
         recipe.ustensils.forEach((ustensil) => {
-          const formattedUstensil = formatString(ustensil).toLowerCase(); // Convertir l'élément en minuscules
+          const formattedUstensil = formatString(ustensil).toLowerCase();
           if (
             formattedUstensil.includes(search) &&
             !filteredSet.has(formattedUstensil)
@@ -253,20 +357,25 @@ function filterTagsByAccordion(
     }
   });
 
-  // Mettre à jour la liste correspondante à l'accordion
+  // Mettre à jour la liste correspondante avec les éléments filtrés
   if (elementType === "ingredient") {
-    ingredientsList.innerHTML = "";
-    elementsArray.forEach((element) => ingredientsList.appendChild(element));
+    addIngredientsToList();
   } else if (elementType === "appliance") {
-    appliancesList.innerHTML = "";
-    elementsArray.forEach((element) => appliancesList.appendChild(element));
+    addAppliancesToList();
   } else if (elementType === "ustensil") {
-    ustensilsList.innerHTML = "";
-    elementsArray.forEach((element) => ustensilsList.appendChild(element));
+    addUstensilsToList();
   }
+
+  // Si des tags sont déjà sélectionnés, maintenir la classe et le contenu de labelSearch
+  if (labelSearch.innerHTML.trim() !== "") {
+    labelSearch.classList.add("labels-search-selected");
+  }
+
+  // Mettre à jour la visibilité de .labels-search-selected après le filtrage
+  updateLabelsSearchVisibility();
 }
 
-// Ajoutez des écouteurs d'événements pour chaque champ de recherche d'accordion
+// Ajouter des écouteurs d'événements pour chaque champ de recherche d'accordion
 ingredientsSearchInput.addEventListener("input", () => {
   filterTagsByAccordion(
     ingredientsSearchInput,
@@ -274,6 +383,7 @@ ingredientsSearchInput.addEventListener("input", () => {
     ingredientsElements,
     "ingredient"
   );
+  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
 });
 
 appliancesSearchInput.addEventListener("input", () => {
@@ -283,6 +393,7 @@ appliancesSearchInput.addEventListener("input", () => {
     appliancesElements,
     "appliance"
   );
+  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
 });
 
 ustensilsSearchInput.addEventListener("input", () => {
@@ -292,11 +403,11 @@ ustensilsSearchInput.addEventListener("input", () => {
     ustensilsElements,
     "ustensil"
   );
+  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
 });
 
-// Appelez la fonction initiale pour afficher les tags et la sélection des tags
+// Appeler la fonction initiale pour afficher les tags et la sélection des tags
 filterTags();
 addIngredientsToList();
 addAppliancesToList();
 addUstensilsToList();
-tagSelection(); // Appel initial de la fonction tagSelection
