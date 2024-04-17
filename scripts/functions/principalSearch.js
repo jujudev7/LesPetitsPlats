@@ -4,6 +4,7 @@ import { generateRecipeCards } from "../factory/cardFactory.js";
 // Sélectionner les éléments HTML pertinents
 const searchInput = document.getElementById("principal-search");
 const searchError = document.querySelector(".error");
+const errorText = document.querySelector(".error-text");
 const nbRecipes = document.querySelector(".nb-recipes");
 
 // Fonction pour mettre à jour le nombre de recettes affichées
@@ -74,9 +75,7 @@ function updateSelectedTags(filteredRecipes) {
               (ingredient) => ingredient.ingredient.toLowerCase() === tagName
             ) ||
             recipe.appliance.toLowerCase() === tagName ||
-            recipe.utensils.some(
-              (utensil) => utensil.toLowerCase() === tagName
-            )
+            recipe.utensils.some((utensil) => utensil.toLowerCase() === tagName)
           );
         });
       });
@@ -178,9 +177,7 @@ function updateSelectedTagsOnSearch(filteredRecipes) {
             (ingredient) => ingredient.ingredient.toLowerCase() === tagName
           ) ||
           recipe.appliance.toLowerCase() === tagName ||
-          recipe.utensils.some(
-            (utensil) => utensil.toLowerCase() === tagName
-          )
+          recipe.utensils.some((utensil) => utensil.toLowerCase() === tagName)
       )
     );
 
@@ -260,8 +257,7 @@ function displayMatchingRecipes(search) {
     searchError.textContent =
       "Désolé, il n'y a pas de recette pour votre recherche. Recommencez svp.";
     if (!errorMessageDisplayed) {
-      const errorText = document.createElement("div");
-      errorText.classList.add("error-text");
+      errorText.style.display = "block";
       errorText.innerHTML = `Aucune recette ne contient « <strong><span style="color: red;">${search}</span></strong> ». Vous pouvez chercher «
     tarte aux pommes », « poisson », etc.`;
       const cards = document.querySelector(".cards");
@@ -279,6 +275,7 @@ function displayMatchingRecipes(search) {
     updateRecipeCount(matchingRecipes.length);
   } else {
     searchError.style.display = "none";
+    errorText.style.display = "none";
 
     // Réinitialiser la variable pour indiquer que le message d'erreur n'est plus affiché
     errorMessageDisplayed = false;
@@ -301,4 +298,3 @@ searchInput.addEventListener("input", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
   displayAllRecipes();
 });
-
