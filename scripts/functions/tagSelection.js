@@ -25,8 +25,8 @@ const ingredientsTagsSelected = document.querySelector(
 const appliancesTagsSelected = document.querySelector(
   ".appliances-tags-selected"
 );
-const ustensilsTagsSelected = document.querySelector(
-  ".ustensils-tags-selected"
+const utensilsTagsSelected = document.querySelector(
+  ".utensils-tags-selected"
 );
 
 const labelsSearchSelected = document.querySelector(".labels-search-selected");
@@ -35,7 +35,7 @@ const labelsSearchSelected = document.querySelector(".labels-search-selected");
 function updateTagsSelectedVisibility(
   ingredientsTagsSelected,
   appliancesTagsSelected,
-  ustensilsTagsSelected
+  utensilsTagsSelected
 ) {
   // Vérifier si chaque .tags-selected contient des éléments enfants
   if (ingredientsTagsSelected.children.length > 0) {
@@ -55,12 +55,12 @@ function updateTagsSelectedVisibility(
     appliancesTagsSelected.style.marginBottom = "0px";
   }
 
-  if (ustensilsTagsSelected.children.length > 0) {
-    ustensilsTagsSelected.style.display = "block"; // Afficher .ustensils-tags-selected s'il y a des éléments enfants
-    ustensilsTagsSelected.style.marginBottom = "15px";
+  if (utensilsTagsSelected.children.length > 0) {
+    utensilsTagsSelected.style.display = "block"; // Afficher .utensils-tags-selected s'il y a des éléments enfants
+    utensilsTagsSelected.style.marginBottom = "15px";
   } else {
-    ustensilsTagsSelected.style.display = "none"; // Cacher .ustensils-tags-selected s'il n'y a pas d'éléments enfants
-    ustensilsTagsSelected.style.marginBottom = "0px";
+    utensilsTagsSelected.style.display = "none"; // Cacher .utensils-tags-selected s'il n'y a pas d'éléments enfants
+    utensilsTagsSelected.style.marginBottom = "0px";
   }
 
   // Vérifier si .labels-search-selected contient des éléments enfants
@@ -75,7 +75,7 @@ function updateTagsSelectedVisibility(
 updateTagsSelectedVisibility(
   ingredientsTagsSelected,
   appliancesTagsSelected,
-  ustensilsTagsSelected
+  utensilsTagsSelected
 );
 
 // Fonction pour gérer le clic sur un élément <li> dans .list-group
@@ -92,8 +92,8 @@ export function handleListItemClick(event) {
     specificClass = "ingredients-tags-selected";
   } else if (accordion.id === "accordionAppliances") {
     specificClass = "appliances-tags-selected";
-  } else if (accordion.id === "accordionUstensils") {
-    specificClass = "ustensils-tags-selected";
+  } else if (accordion.id === "accordionUtensils") {
+    specificClass = "utensils-tags-selected";
   }
 
    // Vérifier si l'élément cliqué est déjà dans la liste .tags-selected
@@ -115,7 +115,7 @@ export function handleListItemClick(event) {
     updateTagsSelectedVisibility(
       ingredientsTagsSelected,
       appliancesTagsSelected,
-      ustensilsTagsSelected
+      utensilsTagsSelected
     );
     updateLabelsSearchVisibility();
   }
@@ -158,7 +158,7 @@ function addTagToSelectedList(clickedItem, specificClass) {
     updateTagsSelectedVisibility(
       ingredientsTagsSelected,
       appliancesTagsSelected,
-      ustensilsTagsSelected
+      utensilsTagsSelected
     );
 
     // updateTagsLabelsVisibility();
@@ -215,7 +215,7 @@ function addTagToLabelsSearch(clickedItem) {
     updateTagsSelectedVisibility(
       ingredientsTagsSelected,
       appliancesTagsSelected,
-      ustensilsTagsSelected
+      utensilsTagsSelected
     );
 
     // updateTagsLabelsVisibility();

@@ -74,8 +74,8 @@ function updateSelectedTags(filteredRecipes) {
               (ingredient) => ingredient.ingredient.toLowerCase() === tagName
             ) ||
             recipe.appliance.toLowerCase() === tagName ||
-            recipe.ustensils.some(
-              (ustensil) => ustensil.toLowerCase() === tagName
+            recipe.utensils.some(
+              (utensil) => utensil.toLowerCase() === tagName
             )
           );
         });
@@ -102,7 +102,7 @@ function updateSelectedTags(filteredRecipes) {
           (ingredient) => ingredient.ingredient.toLowerCase() === tagName
         ) ||
         recipe.appliance.toLowerCase() === tagName ||
-        recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === tagName)
+        recipe.utensils.some((utensil) => utensil.toLowerCase() === tagName)
       );
     });
 
@@ -140,7 +140,7 @@ selectedTags.forEach((tag) => {
           (ingredient) => ingredient.ingredient.toLowerCase() === tagName
         ) ||
         recipe.appliance.toLowerCase() === tagName ||
-        recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === tagName)
+        recipe.utensils.some((utensil) => utensil.toLowerCase() === tagName)
       );
     });
 
@@ -178,8 +178,8 @@ function updateSelectedTagsOnSearch(filteredRecipes) {
             (ingredient) => ingredient.ingredient.toLowerCase() === tagName
           ) ||
           recipe.appliance.toLowerCase() === tagName ||
-          recipe.ustensils.some(
-            (ustensil) => ustensil.toLowerCase() === tagName
+          recipe.utensils.some(
+            (utensil) => utensil.toLowerCase() === tagName
           )
       )
     );
@@ -245,7 +245,7 @@ function displayMatchingRecipes(search) {
           (ingredient) => ingredient.ingredient.toLowerCase() === tagName
         ) ||
         recipe.appliance.toLowerCase() === tagName ||
-        recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === tagName)
+        recipe.utensils.some((utensil) => utensil.toLowerCase() === tagName)
       );
     });
   });
@@ -260,7 +260,6 @@ function displayMatchingRecipes(search) {
     searchError.textContent =
       "Désolé, il n'y a pas de recette pour votre recherche. Recommencez svp.";
     if (!errorMessageDisplayed) {
-      
       const errorText = document.createElement("div");
       errorText.classList.add("error-text");
       errorText.innerHTML = `Aucune recette ne contient « <strong><span style="color: red;">${search}</span></strong> ». Vous pouvez chercher «
@@ -302,3 +301,4 @@ searchInput.addEventListener("input", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
   displayAllRecipes();
 });
+

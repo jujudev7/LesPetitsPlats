@@ -192,13 +192,13 @@ main {
 
 #ingredients-search::placeholder,
 #appliances-search::placeholder,
-#ustensils-search::placeholder {
+#utensils-search::placeholder {
   color: #ededed;
 }
 
 #ingredients-search,
 #appliances-search,
-#ustensils-search {
+#utensils-search {
   font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -223,7 +223,7 @@ input[type="search"]#principal-search::-webkit-search-cancel-button {
 
 input[type="search"]#ingredients-search::-webkit-search-cancel-button,
 input[type="search"]#appliances-search::-webkit-search-cancel-button,
-input[type="search"]#ustensils-search::-webkit-search-cancel-button {
+input[type="search"]#utensils-search::-webkit-search-cancel-button {
   appearance: none;
   background: url(./assets/icons/erase-small-search.svg) no-repeat center center;
   stroke-width: 1px;

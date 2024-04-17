@@ -1,18 +1,18 @@
 import { recipes } from "../../data/recipes.js";
 import { handleListItemClick } from "./tagSelection.js";
 
-// Sélection des éléments .tags-selected sépcifiques + labelsearch
+// Sélection des éléments .tags-selected spécifiques + labelsearch
 const ingredientsTagsSelected = document.querySelector(
   ".ingredients-tags-selected"
 );
 const appliancesTagsSelected = document.querySelector(
   ".appliances-tags-selected"
 );
-const ustensilsTagsSelected = document.querySelector(
-  ".ustensils-tags-selected"
+const utensilsTagsSelected = document.querySelector(
+  ".utensils-tags-selected"
 );
 
-const labelsSearchSelected = document.querySelector(".labels-search-selected");
+const labelSearch = document.querySelector(".labels-search-selected");
 
 // Fonction pour mettre à jour la visibilité de chaque .tags-selected spécifique
 function updateTagsSelectedVisibility() {
@@ -34,17 +34,14 @@ function updateTagsSelectedVisibility() {
     appliancesTagsSelected.style.marginBottom = "0px";
   }
 
-  if (ustensilsTagsSelected.children.length > 0) {
-    ustensilsTagsSelected.style.display = "block"; // Afficher .ustensils-tags-selected s'il y a des éléments enfants
-    ustensilsTagsSelected.style.marginBottom = "15px";
+  if (utensilsTagsSelected.children.length > 0) {
+    utensilsTagsSelected.style.display = "block"; // Afficher .utensils-tags-selected s'il y a des éléments enfants
+    utensilsTagsSelected.style.marginBottom = "15px";
   } else {
-    ustensilsTagsSelected.style.display = "none"; // Cacher .ustensils-tags-selected s'il n'y a pas d'éléments enfants
-    ustensilsTagsSelected.style.marginBottom = "0px";
+    utensilsTagsSelected.style.display = "none"; // Cacher .utensils-tags-selected s'il n'y a pas d'éléments enfants
+    utensilsTagsSelected.style.marginBottom = "0px";
   }
 }
-
-// Déclaration et initialisation de labelSearchVisibilityState
-let labelSearchVisibilityState = true;
 
 // Sélection de l'élément de la barre de recherche
 const searchInput = document.getElementById("principal-search");
@@ -56,17 +53,17 @@ const ingredientsList = document.querySelector(".list-group-ingredients");
 const appliancesList = document.querySelector(".list-group-appliances");
 
 // Sélection de l'élément <ul> où les ustensiles seront ajoutés
-const ustensilsList = document.querySelector(".list-group-ustensils");
+const utensilsList = document.querySelector(".list-group-utensils");
 
 // Déclaration des ensembles filtrés pour les ingrédients, les appareils et les ustensiles
 let filteredIngredients = new Set();
 let filteredAppliances = new Set();
-let filteredUstensils = new Set();
+let filteredUtensils = new Set();
 
 // Déclaration des tableaux pour stocker les éléments avec leurs identifiants
 let ingredientsElements = [];
 let appliancesElements = [];
-let ustensilsElements = [];
+let utensilsElements = [];
 
 // Déclaration d'un objet pour stocker les identifiants initiaux des tags
 let tagIds = {};
@@ -104,17 +101,17 @@ function addAppliancesToList() {
 }
 
 // Fonction pour ajouter les ustensiles à la liste
-function addUstensilsToList() {
+function addUtensilsToList() {
   // Effacer la liste actuelle des ustensiles
-  ustensilsList.innerHTML = "";
+  utensilsList.innerHTML = "";
 
   // Ajouter chaque ustensile à la liste
-  ustensilsElements.forEach((element) => {
+  utensilsElements.forEach((element) => {
     // Récupérer l'identifiant initial à partir de l'objet tagIds
     const id = tagIds[element.textContent];
     if (id !== undefined) {
       element.id = id;
-      ustensilsList.appendChild(element);
+      utensilsList.appendChild(element);
     }
   });
 }
@@ -135,20 +132,38 @@ function isRecipeMatchSearch(recipe) {
     recipe.description.toLowerCase().includes(search)
   );
 }
+
 // Créer une fonction pour filtrer les tags en fonction des recettes correspondantes à la recherche principale
 function filterTags() {
   // Réinitialiser les ensembles filtrés
   filteredIngredients.clear();
   filteredAppliances.clear();
-  filteredUstensils.clear();
+  filteredUtensils.clear();
 
   // Réinitialiser complètement les tableaux d'éléments
   ingredientsElements = [];
   appliancesElements = [];
-  ustensilsElements = [];
+  utensilsElements = [];
+
+  const selectedTags = Array.from(labelSearch.children).map((tag) =>
+    tag.textContent.trim().toLowerCase()
+  );
 
   recipes.forEach((recipe) => {
-    if (isRecipeMatchSearch(recipe)) {
+    if (
+      isRecipeMatchSearch(recipe) &&
+      (selectedTags.length === 0 ||
+        selectedTags.every(
+          (tag) =>
+            recipe.ingredients.some((ingredient) =>
+              ingredient.ingredient.toLowerCase().includes(tag)
+            ) ||
+            recipe.appliance.toLowerCase().includes(tag) ||
+            recipe.utensils.some((utensil) =>
+              utensil.toLowerCase().includes(tag)
+            )
+        ))
+    ) {
       recipe.ingredients.forEach((ingredient) => {
         const formattedIngredient = formatString(ingredient.ingredient);
         if (!filteredIngredients.has(formattedIngredient)) {
@@ -178,15 +193,15 @@ function filterTags() {
         }
       }
 
-      recipe.ustensils.forEach((ustensil) => {
-        const formattedUstensil = formatString(ustensil);
-        if (!filteredUstensils.has(formattedUstensil)) {
-          filteredUstensils.add(formattedUstensil);
-          const li = createListItem(formattedUstensil, "ustensil");
+      recipe.utensils.forEach((utensil) => {
+        const formattedUstensil = formatString(utensil);
+        if (!filteredUtensils.has(formattedUstensil)) {
+          filteredUtensils.add(formattedUstensil);
+          const li = createListItem(formattedUstensil, "utensil");
           const id =
             tagIds[formattedUstensil] || Object.keys(tagIds).length + 1;
           li.id = id;
-          ustensilsElements.push(li);
+          utensilsElements.push(li);
           // Stocker l'identifiant initial dans l'objet tagIds s'il n'existe pas encore
           if (!tagIds[formattedUstensil]) {
             tagIds[formattedUstensil] = id;
@@ -199,7 +214,7 @@ function filterTags() {
   // Mettre à jour les listes d'ingrédients, d'appareils et d'ustensiles
   addIngredientsToList();
   addAppliancesToList();
-  addUstensilsToList();
+  addUtensilsToList();
 }
 
 // Fonction pour créer un élément de liste avec un gestionnaire d'événements clic attaché
@@ -221,29 +236,17 @@ searchInput.addEventListener("input", () => {
   filterTags();
   addIngredientsToList();
   addAppliancesToList();
-  addUstensilsToList();
+  addUtensilsToList();
 });
 
 // Sélection des éléments des champs de recherche spécifiques à chaque accordion
 const ingredientsSearchInput = document.getElementById("ingredients-search");
 const appliancesSearchInput = document.getElementById("appliances-search");
-const ustensilsSearchInput = document.getElementById("ustensils-search");
+const utensilsSearchInput = document.getElementById("utensils-search");
 
-const labelSearch = document.querySelector(".labels-search-selected");
-
-// Fonction pour restaurer l'état de visibilité de labelSearch
-function restoreLabelsSearchVisibility() {
-  // const labelSearch = document.querySelector(".labels-search-selected");
-  if (labelSearchVisibilityState) {
-    labelSearch.style.display = "block";
-  } else {
-    labelSearch.style.display = "none";
-  }
-}
 
 // Fonction pour mettre à jour la visibilité de .labels-search-selected en fonction du nombre d'éléments enfants
 export function updateLabelsSearchVisibility() {
-  const labelSearch = document.querySelector(".labels-search-selected");
   if (labelSearch) {
     const ingredientsTagsSelected = document.querySelector(
       ".ingredients-tags-selected"
@@ -251,28 +254,28 @@ export function updateLabelsSearchVisibility() {
     const appliancesTagsSelected = document.querySelector(
       ".appliances-tags-selected"
     );
-    const ustensilsTagsSelected = document.querySelector(
-      ".ustensils-tags-selected"
+    const utensilsTagsSelected = document.querySelector(
+      ".utensils-tags-selected"
     );
 
     const hasIngredientsSelection = ingredientsTagsSelected.children.length > 0;
     const hasAppliancesSelection = appliancesTagsSelected.children.length > 0;
-    const hasUstensilsSelection = ustensilsTagsSelected.children.length > 0;
+    const hasUtensilsSelection = utensilsTagsSelected.children.length > 0;
 
     // Vérifier si des éléments ont été sélectionnés dans les listes spécifiques
     const hasSelection =
       hasIngredientsSelection ||
       hasAppliancesSelection ||
-      hasUstensilsSelection;
+      hasUtensilsSelection;
 
     // Vérifier si des tags sont déjà sélectionnés dans .labels-search-selected
     const hasLabelsSearchSelection = labelSearch.children.length > 0;
 
     // Afficher ou masquer .labels-search-selected en fonction de la sélection
     if (hasSelection || hasLabelsSearchSelection) {
-      labelSearch.style.cssText = "display: block !important"; // Afficher labelsSearchSelected s'il y a des éléments enfants
+      labelSearch.style.cssText = "display: block !important";
     } else {
-      labelSearch.style.cssText = "display: none !important"; // Cacher labelsSearchSelected s'il n'y a pas d'éléments enfants
+      labelSearch.style.cssText = "display: none !important";
     }
   }
 }
@@ -284,8 +287,6 @@ function filterTagsByAccordion(
   elementsArray,
   elementType
 ) {
-  restoreLabelsSearchVisibility(); // Restaure l'état de visibilité de labelSearch
-
   // Réinitialiser les ensembles filtrés et les tableaux d'éléments
   filteredSet.clear();
   elementsArray.length = 0;
@@ -336,15 +337,15 @@ function filterTagsByAccordion(
             tagIds[formattedAppliance] = id;
           }
         }
-      } else if (elementType === "ustensil") {
-        recipe.ustensils.forEach((ustensil) => {
-          const formattedUstensil = formatString(ustensil).toLowerCase();
+      } else if (elementType === "utensil") {
+        recipe.utensils.forEach((utensil) => {
+          const formattedUstensil = formatString(utensil).toLowerCase();
           if (
             formattedUstensil.includes(search) &&
             !filteredSet.has(formattedUstensil)
           ) {
             filteredSet.add(formattedUstensil);
-            const li = createListItem(ustensil, elementType);
+            const li = createListItem(utensil, elementType);
             const id =
               tagIds[formattedUstensil] || Object.keys(tagIds).length + 1;
             li.id = id;
@@ -363,8 +364,8 @@ function filterTagsByAccordion(
     addIngredientsToList();
   } else if (elementType === "appliance") {
     addAppliancesToList();
-  } else if (elementType === "ustensil") {
-    addUstensilsToList();
+  } else if (elementType === "utensil") {
+    addUtensilsToList();
   }
 
   // Si des tags sont déjà sélectionnés, maintenir la classe et le contenu de labelSearch
@@ -384,7 +385,7 @@ ingredientsSearchInput.addEventListener("input", () => {
     ingredientsElements,
     "ingredient"
   );
-  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
+  updateLabelsSearchVisibility();
 });
 
 appliancesSearchInput.addEventListener("input", () => {
@@ -394,22 +395,51 @@ appliancesSearchInput.addEventListener("input", () => {
     appliancesElements,
     "appliance"
   );
-  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
+  updateLabelsSearchVisibility();
 });
 
-ustensilsSearchInput.addEventListener("input", () => {
+utensilsSearchInput.addEventListener("input", () => {
   filterTagsByAccordion(
-    ustensilsSearchInput,
-    filteredUstensils,
-    ustensilsElements,
-    "ustensil"
+    utensilsSearchInput,
+    filteredUtensils,
+    utensilsElements,
+    "utensil"
   );
-  updateLabelsSearchVisibility(); // Ajout de l'appel à updateLabelsSearchVisibility()
+  updateLabelsSearchVisibility();
 });
 
-// Appeler la fonction initiale pour afficher les tags et la sélection des tags
+// Fonction pour filtrer les tags dans chaque accordion
+function filterTagsbyAccordionSearch(accordionId, searchInputId, listItemClass) {
+  const accordion = document.getElementById(accordionId);
+  const searchInput = document.getElementById(searchInputId);
+
+  if (accordion && searchInput) { // Vérifier si les éléments existent
+    const listItems = accordion.querySelectorAll(`.${listItemClass}`);
+
+    searchInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase();
+      listItems.forEach(function (item) {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  } else {
+    console.log(`One or both of the elements with IDs ${accordionId} and ${searchInputId} do not exist.`);
+  }
+}
+
+filterTagsbyAccordionSearch('accordionIngredients', 'ingredients-search', 'list-group-item');
+filterTagsbyAccordionSearch('accordionAppliances', 'appliances-search', 'list-group-item');
+filterTagsbyAccordionSearch('accordionUtensils', 'utensils-search', 'list-group-item');
+
+
 filterTags();
 addIngredientsToList();
 addAppliancesToList();
-addUstensilsToList();
+addUtensilsToList();
 updateTagsSelectedVisibility();
+updateLabelsSearchVisibility();
